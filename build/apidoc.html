@@ -118,6 +118,12 @@
 
         </li>
 
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">glob.</span>common</span>
+
+        </li>
+
     </ol></li>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.glob.Glob">module glob.Glob</a><ol>
@@ -478,6 +484,91 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.glob.common">module glob.common</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.common.alphasort">
+            function <span class="apidocSignatureSpan">glob.common.</span>alphasort
+            <span class="apidocSignatureSpan">(a, b)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.common.alphasorti">
+            function <span class="apidocSignatureSpan">glob.common.</span>alphasorti
+            <span class="apidocSignatureSpan">(a, b)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.common.childrenIgnored">
+            function <span class="apidocSignatureSpan">glob.common.</span>childrenIgnored
+            <span class="apidocSignatureSpan">(self, path)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.common.finish">
+            function <span class="apidocSignatureSpan">glob.common.</span>finish
+            <span class="apidocSignatureSpan">(self)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.common.isIgnored">
+            function <span class="apidocSignatureSpan">glob.common.</span>isIgnored
+            <span class="apidocSignatureSpan">(self, path)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.common.makeAbs">
+            function <span class="apidocSignatureSpan">glob.common.</span>makeAbs
+            <span class="apidocSignatureSpan">(self, f)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.common.mark">
+            function <span class="apidocSignatureSpan">glob.common.</span>mark
+            <span class="apidocSignatureSpan">(self, p)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.common.ownProp">
+            function <span class="apidocSignatureSpan">glob.common.</span>ownProp
+            <span class="apidocSignatureSpan">(obj, field)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.common.setopts">
+            function <span class="apidocSignatureSpan">glob.common.</span>setopts
+            <span class="apidocSignatureSpan">(self, pattern, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.glob.sync">module glob.sync</a><ol>
 
         <li>
@@ -740,6 +831,8 @@ Perform an asynchronous glob search.
 Perform a synchronous glob search.
 ...</pre></li>
     </ul>
+
+
 
 
 
@@ -2839,6 +2932,353 @@ Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
 
 //console.error(&#x27;ps2&#x27;, prefix, exists)
 ...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.glob.common" id="apidoc.module.glob.common">module glob.common</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.glob.common.alphasort" id="apidoc.element.glob.common.alphasort">
+        function <span class="apidocSignatureSpan">glob.common.</span>alphasort
+        <span class="apidocSignatureSpan">(a, b)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function alphasort(a, b) {
+  return a.localeCompare(b)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.common.alphasorti" id="apidoc.element.glob.common.alphasorti">
+        function <span class="apidocSignatureSpan">glob.common.</span>alphasorti
+        <span class="apidocSignatureSpan">(a, b)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function alphasorti(a, b) {
+  return a.toLowerCase().localeCompare(b.toLowerCase())
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.common.childrenIgnored" id="apidoc.element.glob.common.childrenIgnored">
+        function <span class="apidocSignatureSpan">glob.common.</span>childrenIgnored
+        <span class="apidocSignatureSpan">(self, path)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function childrenIgnored(self, path) {
+  if (!self.ignore.length)
+    return false
+
+  return self.ignore.some(function(item) {
+    return !!(item.gmatcher &#x26;&#x26; item.gmatcher.match(path))
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.common.finish" id="apidoc.element.glob.common.finish">
+        function <span class="apidocSignatureSpan">glob.common.</span>finish
+        <span class="apidocSignatureSpan">(self)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function finish(self) {
+  var nou = self.nounique
+  var all = nou ? [] : Object.create(null)
+
+  for (var i = 0, l = self.matches.length; i &#x3c; l; i ++) {
+    var matches = self.matches[i]
+    if (!matches || Object.keys(matches).length === 0) {
+      if (self.nonull) {
+        // do like the shell, and spit out the literal glob
+        var literal = self.minimatch.globSet[i]
+        if (nou)
+          all.push(literal)
+        else
+          all[literal] = true
+      }
+    } else {
+      // had matches
+      var m = Object.keys(matches)
+      if (nou)
+        all.push.apply(all, m)
+      else
+        m.forEach(function (m) {
+          all[m] = true
+        })
+    }
+  }
+
+  if (!nou)
+    all = Object.keys(all)
+
+  if (!self.nosort)
+    all = all.sort(self.nocase ? alphasorti : alphasort)
+
+  // at *some* point we statted all of these
+  if (self.mark) {
+    for (var i = 0; i &#x3c; all.length; i++) {
+      all[i] = self._mark(all[i])
+    }
+    if (self.nodir) {
+      all = all.filter(function (e) {
+        var notDir = !(/\/$/.test(e))
+        var c = self.cache[e] || self.cache[makeAbs(self, e)]
+        if (notDir &#x26;&#x26; c)
+          notDir = c !== &#x27;DIR&#x27; &#x26;&#x26; !Array.isArray(c)
+        return notDir
+      })
+    }
+  }
+
+  if (self.ignore.length)
+    all = all.filter(function(m) {
+      return !isIgnored(self, m)
+    })
+
+  self.found = all
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+assert(this instanceof Glob)
+if (this.aborted)
+  return
+
+if (this.realpath &#x26;&#x26; !this._didRealpath)
+  return this._realpath()
+
+common.<span class="apidocCodeKeywordSpan">finish</span>(this)
+this.emit(&#x27;end&#x27;, this.found)
+}
+
+Glob.prototype._realpath = function () {
+if (this._didRealpath)
+  return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.common.isIgnored" id="apidoc.element.glob.common.isIgnored">
+        function <span class="apidocSignatureSpan">glob.common.</span>isIgnored
+        <span class="apidocSignatureSpan">(self, path)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isIgnored(self, path) {
+  if (!self.ignore.length)
+    return false
+
+  return self.ignore.some(function(item) {
+    return item.matcher.match(path) || !!(item.gmatcher &#x26;&#x26; item.gmatcher.match(path))
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.common.makeAbs" id="apidoc.element.glob.common.makeAbs">
+        function <span class="apidocSignatureSpan">glob.common.</span>makeAbs
+        <span class="apidocSignatureSpan">(self, f)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function makeAbs(self, f) {
+  var abs = f
+  if (f.charAt(0) === &#x27;/&#x27;) {
+    abs = path.join(self.root, f)
+  } else if (isAbsolute(f) || f === &#x27;&#x27;) {
+    abs = f
+  } else if (self.changedCwd) {
+    abs = path.resolve(self.cwd, f)
+  } else {
+    abs = path.resolve(f)
+  }
+
+  if (process.platform === &#x27;win32&#x27;)
+    abs = abs.replace(/\\/g, &#x27;/&#x27;)
+
+  return abs
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+Glob.prototype._mark = function (p) {
+  return common.mark(this, p)
+}
+
+Glob.prototype._makeAbs = function (f) {
+  return common.<span class="apidocCodeKeywordSpan">makeAbs</span>(this, f)
+}
+
+Glob.prototype.abort = function () {
+  this.aborted = true
+  this.emit(&#x27;abort&#x27;)
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.common.mark" id="apidoc.element.glob.common.mark">
+        function <span class="apidocSignatureSpan">glob.common.</span>mark
+        <span class="apidocSignatureSpan">(self, p)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function mark(self, p) {
+  var abs = makeAbs(self, p)
+  var c = self.cache[abs]
+  var m = p
+  if (c) {
+    var isDir = c === &#x27;DIR&#x27; || Array.isArray(c)
+    var slash = p.slice(-1) === &#x27;/&#x27;
+
+    if (isDir &#x26;&#x26; !slash)
+      m += &#x27;/&#x27;
+    else if (!isDir &#x26;&#x26; slash)
+      m = m.slice(0, -1)
+
+    if (m !== p) {
+      var mabs = makeAbs(self, m)
+      self.statCache[mabs] = self.statCache[abs]
+      self.cache[mabs] = self.cache[abs]
+    }
+  }
+
+  return m
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        cb()
+      }
+    })
+  })
+}
+
+Glob.prototype._mark = function (p) {
+  return common.<span class="apidocCodeKeywordSpan">mark</span>(this, p)
+}
+
+Glob.prototype._makeAbs = function (f) {
+  return common.makeAbs(this, f)
+}
+
+Glob.prototype.abort = function () {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.common.ownProp" id="apidoc.element.glob.common.ownProp">
+        function <span class="apidocSignatureSpan">glob.common.</span>ownProp
+        <span class="apidocSignatureSpan">(obj, field)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ownProp(obj, field) {
+  return Object.prototype.hasOwnProperty.call(obj, field)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.common.setopts" id="apidoc.element.glob.common.setopts">
+        function <span class="apidocSignatureSpan">glob.common.</span>setopts
+        <span class="apidocSignatureSpan">(self, pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function setopts(self, pattern, options) {
+  if (!options)
+    options = {}
+
+  // base-matching: just use globstar for that.
+  if (options.matchBase &#x26;&#x26; -1 === pattern.indexOf(&#x22;/&#x22;)) {
+    if (options.noglobstar) {
+      throw new Error(&#x22;base matching requires globstar&#x22;)
+    }
+    pattern = &#x22;**/&#x22; + pattern
+  }
+
+  self.silent = !!options.silent
+  self.pattern = pattern
+  self.strict = options.strict !== false
+  self.realpath = !!options.realpath
+  self.realpathCache = options.realpathCache || Object.create(null)
+  self.follow = !!options.follow
+  self.dot = !!options.dot
+  self.mark = !!options.mark
+  self.nodir = !!options.nodir
+  if (self.nodir)
+    self.mark = true
+  self.sync = !!options.sync
+  self.nounique = !!options.nounique
+  self.nonull = !!options.nonull
+  self.nosort = !!options.nosort
+  self.nocase = !!options.nocase
+  self.stat = !!options.stat
+  self.noprocess = !!options.noprocess
+  self.absolute = !!options.absolute
+
+  self.maxLength = options.maxLength || Infinity
+  self.cache = options.cache || Object.create(null)
+  self.statCache = options.statCache || Object.create(null)
+  self.symlinks = options.symlinks || Object.create(null)
+
+  setupIgnores(self, options)
+
+  self.changedCwd = false
+  var cwd = process.cwd()
+  if (!ownProp(options, &#x22;cwd&#x22;))
+    self.cwd = cwd
+  else {
+    self.cwd = path.resolve(options.cwd)
+    self.changedCwd = self.cwd !== cwd
+  }
+
+  self.root = options.root || path.resolve(self.cwd, &#x22;/&#x22;)
+  self.root = path.resolve(self.root)
+  if (process.platform === &#x22;win32&#x22;)
+    self.root = self.root.replace(/\\/g, &#x22;/&#x22;)
+
+  // TODO: is an absolute `cwd` supposed to be resolved against `root`?
+  // e.g. { cwd: &#x27;/test&#x27;, root: __dirname } === path.join(__dirname, &#x27;/test&#x27;)
+  self.cwdAbs = isAbsolute(self.cwd) ? self.cwd : makeAbs(self, self.cwd)
+  if (process.platform === &#x22;win32&#x22;)
+    self.cwdAbs = self.cwdAbs.replace(/\\/g, &#x22;/&#x22;)
+  self.nomount = !!options.nomount
+
+  // disable comments and negation in Minimatch.
+  // Note that they are not supported in Glob itself anyway.
+  options.nonegate = true
+  options.nocomment = true
+
+  self.minimatch = new Minimatch(pattern, options)
+  self.options = self.minimatch.options
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
