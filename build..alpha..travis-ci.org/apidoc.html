@@ -1,0 +1,2926 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/isaacs/node-glob#readme"
+
+    >glob (v7.1.1)</a>
+</h1>
+<h4>a little globber</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.glob">module glob</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.glob">
+            function <span class="apidocSignatureSpan"></span>glob
+            <span class="apidocSignatureSpan">(pattern, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob">
+            function <span class="apidocSignatureSpan">glob.</span>Glob
+            <span class="apidocSignatureSpan">(pattern, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync">
+            function <span class="apidocSignatureSpan">glob.</span>GlobSync
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.hasMagic">
+            function <span class="apidocSignatureSpan">glob.</span>hasMagic
+            <span class="apidocSignatureSpan">(pattern, options_)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.sync">
+            function <span class="apidocSignatureSpan">glob.</span>sync
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">glob.</span>Glob.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">glob.</span>GlobSync.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.glob.Glob">module glob.Glob</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.Glob">
+            function <span class="apidocSignatureSpan">glob.</span>Glob
+            <span class="apidocSignatureSpan">(pattern, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.super_">
+            function <span class="apidocSignatureSpan">glob.Glob.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.glob.Glob.prototype">module glob.Glob.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._emitMatch">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_emitMatch
+            <span class="apidocSignatureSpan">(index, e)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._finish">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_finish
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._makeAbs">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_makeAbs
+            <span class="apidocSignatureSpan">(f)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._mark">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_mark
+            <span class="apidocSignatureSpan">(p)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._process">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_process
+            <span class="apidocSignatureSpan">(pattern, index, inGlobStar, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._processGlobStar">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processGlobStar
+            <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._processGlobStar2">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processGlobStar2
+            <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar, entries, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._processReaddir">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processReaddir
+            <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._processReaddir2">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processReaddir2
+            <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar, entries, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._processSimple">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processSimple
+            <span class="apidocSignatureSpan">(prefix, index, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._processSimple2">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processSimple2
+            <span class="apidocSignatureSpan">(prefix, index, er, exists, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._readdir">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_readdir
+            <span class="apidocSignatureSpan">(abs, inGlobStar, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._readdirEntries">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_readdirEntries
+            <span class="apidocSignatureSpan">(abs, entries, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._readdirError">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_readdirError
+            <span class="apidocSignatureSpan">(f, er, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._readdirInGlobStar">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_readdirInGlobStar
+            <span class="apidocSignatureSpan">(abs, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._realpath">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_realpath
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._realpathSet">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_realpathSet
+            <span class="apidocSignatureSpan">(index, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._stat">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_stat
+            <span class="apidocSignatureSpan">(f, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype._stat2">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_stat2
+            <span class="apidocSignatureSpan">(f, abs, er, stat, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype.abort">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>abort
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype.pause">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>pause
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.Glob.prototype.resume">
+            function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>resume
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.glob.GlobSync">module glob.GlobSync</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.GlobSync">
+            function <span class="apidocSignatureSpan">glob.</span>GlobSync
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.glob.GlobSync.prototype">module glob.GlobSync.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._emitMatch">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_emitMatch
+            <span class="apidocSignatureSpan">(index, e)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._finish">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_finish
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._makeAbs">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_makeAbs
+            <span class="apidocSignatureSpan">(f)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._mark">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_mark
+            <span class="apidocSignatureSpan">(p)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._process">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_process
+            <span class="apidocSignatureSpan">(pattern, index, inGlobStar)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._processGlobStar">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_processGlobStar
+            <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._processReaddir">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_processReaddir
+            <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._processSimple">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_processSimple
+            <span class="apidocSignatureSpan">(prefix, index)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._readdir">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_readdir
+            <span class="apidocSignatureSpan">(abs, inGlobStar)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._readdirEntries">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_readdirEntries
+            <span class="apidocSignatureSpan">(abs, entries)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._readdirError">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_readdirError
+            <span class="apidocSignatureSpan">(f, er)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._readdirInGlobStar">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_readdirInGlobStar
+            <span class="apidocSignatureSpan">(abs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.GlobSync.prototype._stat">
+            function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_stat
+            <span class="apidocSignatureSpan">(f)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.glob.sync">module glob.sync</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.sync.sync">
+            function <span class="apidocSignatureSpan">glob.</span>sync
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.sync.GlobSync">
+            function <span class="apidocSignatureSpan">glob.sync.</span>GlobSync
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.glob" id="apidoc.module.glob">module glob</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.glob.glob" id="apidoc.element.glob.glob">
+        function <span class="apidocSignatureSpan"></span>glob
+        <span class="apidocSignatureSpan">(pattern, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function glob(pattern, options, cb) {
+  if (typeof options === &#x27;function&#x27;) cb = options, options = {}
+  if (!options) options = {}
+
+  if (options.sync) {
+    if (cb)
+      throw new TypeError(&#x27;callback provided to sync glob&#x27;)
+    return globSync(pattern, options)
+  }
+
+  return new Glob(pattern, options, cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob" id="apidoc.element.glob.Glob">
+        function <span class="apidocSignatureSpan">glob.</span>Glob
+        <span class="apidocSignatureSpan">(pattern, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Glob(pattern, options, cb) {
+  if (typeof options === &#x27;function&#x27;) {
+    cb = options
+    options = null
+  }
+
+  if (options &#x26;&#x26; options.sync) {
+    if (cb)
+      throw new TypeError(&#x27;callback provided to sync glob&#x27;)
+    return new GlobSync(pattern, options)
+  }
+
+  if (!(this instanceof Glob))
+    return new Glob(pattern, options, cb)
+
+  setopts(this, pattern, options)
+  this._didRealPath = false
+
+  // process each pattern in the minimatch set
+  var n = this.minimatch.set.length
+
+  // The matches are stored as {&#x3c;filename&#x3e;: true,...} so that
+  // duplicates are automagically pruned.
+  // Later, we do an Object.keys() on these.
+  // Keep them as a list so we can fill in when nonull is set.
+  this.matches = new Array(n)
+
+  if (typeof cb === &#x27;function&#x27;) {
+    cb = once(cb)
+    this.on(&#x27;error&#x27;, cb)
+    this.on(&#x27;end&#x27;, function (matches) {
+      cb(null, matches)
+    })
+  }
+
+  var self = this
+  var n = this.minimatch.set.length
+  this._processing = 0
+  this.matches = new Array(n)
+
+  this._emitQueue = []
+  this._processQueue = []
+  this.paused = false
+
+  if (this.noprocess)
+    return this
+
+  if (n === 0)
+    return done()
+
+  var sync = true
+  for (var i = 0; i &#x3c; n; i ++) {
+    this._process(this.minimatch.set[i], i, false, done)
+  }
+  sync = false
+
+  function done () {
+    --self._processing
+    if (self._processing &#x3c;= 0) {
+      if (sync) {
+        process.nextTick(function () {
+          self._finish()
+        })
+      } else {
+        self._finish()
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var Glob = require(&#x22;glob&#x22;).Glob
+var mg = new Glob(pattern, options, cb)
+```
+
+It&#x27;s an EventEmitter, and starts walking the filesystem to find matches
+immediately.
+
+### new glob.<span class="apidocCodeKeywordSpan">Glob</span>(pattern, [options], [cb])
+
+* `pattern` `{String}` pattern to search for
+* `options` `{Object}`
+* `cb` `{Function}` Called when an error occurs, or matches are found
+* `err` `{Error | null}`
+* `matches` `{Array&#x3c;String&#x3e;}` filenames found matching the pattern
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync" id="apidoc.element.glob.GlobSync">
+        function <span class="apidocSignatureSpan">glob.</span>GlobSync
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function GlobSync(pattern, options) {
+  if (!pattern)
+    throw new Error(&#x27;must provide pattern&#x27;)
+
+  if (typeof options === &#x27;function&#x27; || arguments.length === 3)
+    throw new TypeError(&#x27;callback provided to sync glob\n&#x27;+
+                        &#x27;See: https://github.com/isaacs/node-glob/issues/167&#x27;)
+
+  if (!(this instanceof GlobSync))
+    return new GlobSync(pattern, options)
+
+  setopts(this, pattern, options)
+
+  if (this.noprocess)
+    return this
+
+  var n = this.minimatch.set.length
+  this.matches = new Array(n)
+  for (var i = 0; i &#x3c; n; i ++) {
+    this._process(this.minimatch.set[i], i, false)
+  }
+  this._finish()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.hasMagic" id="apidoc.element.glob.hasMagic">
+        function <span class="apidocSignatureSpan">glob.</span>hasMagic
+        <span class="apidocSignatureSpan">(pattern, options_)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasMagic = function (pattern, options_) {
+  var options = extend({}, options_)
+  options.noprocess = true
+
+  var g = new Glob(pattern, options)
+  var set = g.minimatch.set
+
+  if (!pattern)
+    return false
+
+  if (set.length &#x3e; 1)
+    return true
+
+  for (var j = 0; j &#x3c; set[0].length; j++) {
+    if (typeof set[0][j] !== &#x27;string&#x27;)
+      return true
+  }
+
+  return false
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+* `man sh`
+* `man bash` (Search for &#x22;Pattern Matching&#x22;)
+* `man 3 fnmatch`
+* `man 5 gitignore`
+* [minimatch documentation](https://github.com/isaacs/minimatch)
+
+## glob.<span class="apidocCodeKeywordSpan">hasMagic</span>(pattern, [options])
+
+Returns `true` if there are any special characters in the pattern, and
+`false` otherwise.
+
+Note that the options affect the results.  If `noext:true` is set in
+the options object, then `+(a|b)` will not be considered a magic
+pattern.  If the pattern has a brace expansion, like `a/{b/c,x/y}`
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.sync" id="apidoc.element.glob.sync">
+        function <span class="apidocSignatureSpan">glob.</span>sync
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function globSync(pattern, options) {
+  if (typeof options === &#x27;function&#x27; || arguments.length === 3)
+    throw new TypeError(&#x27;callback provided to sync glob\n&#x27;+
+                        &#x27;See: https://github.com/isaacs/node-glob/issues/167&#x27;)
+
+  return new GlobSync(pattern, options).found
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* `options` `{Object}`
+* `cb` `{Function}`
+  * `err` `{Error | null}`
+  * `matches` `{Array&#x3c;String&#x3e;}` filenames found matching the pattern
+
+Perform an asynchronous glob search.
+
+## glob.<span class="apidocCodeKeywordSpan">sync</span>(pattern, [options])
+
+* `pattern` `{String}` Pattern to be matched
+* `options` `{Object}`
+* return: `{Array&#x3c;String&#x3e;}` filenames found matching the pattern
+
+Perform a synchronous glob search.
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.glob.Glob" id="apidoc.module.glob.Glob">module glob.Glob</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.Glob" id="apidoc.element.glob.Glob.Glob">
+        function <span class="apidocSignatureSpan">glob.</span>Glob
+        <span class="apidocSignatureSpan">(pattern, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Glob(pattern, options, cb) {
+  if (typeof options === &#x27;function&#x27;) {
+    cb = options
+    options = null
+  }
+
+  if (options &#x26;&#x26; options.sync) {
+    if (cb)
+      throw new TypeError(&#x27;callback provided to sync glob&#x27;)
+    return new GlobSync(pattern, options)
+  }
+
+  if (!(this instanceof Glob))
+    return new Glob(pattern, options, cb)
+
+  setopts(this, pattern, options)
+  this._didRealPath = false
+
+  // process each pattern in the minimatch set
+  var n = this.minimatch.set.length
+
+  // The matches are stored as {&#x3c;filename&#x3e;: true,...} so that
+  // duplicates are automagically pruned.
+  // Later, we do an Object.keys() on these.
+  // Keep them as a list so we can fill in when nonull is set.
+  this.matches = new Array(n)
+
+  if (typeof cb === &#x27;function&#x27;) {
+    cb = once(cb)
+    this.on(&#x27;error&#x27;, cb)
+    this.on(&#x27;end&#x27;, function (matches) {
+      cb(null, matches)
+    })
+  }
+
+  var self = this
+  var n = this.minimatch.set.length
+  this._processing = 0
+  this.matches = new Array(n)
+
+  this._emitQueue = []
+  this._processQueue = []
+  this.paused = false
+
+  if (this.noprocess)
+    return this
+
+  if (n === 0)
+    return done()
+
+  var sync = true
+  for (var i = 0; i &#x3c; n; i ++) {
+    this._process(this.minimatch.set[i], i, false, done)
+  }
+  sync = false
+
+  function done () {
+    --self._processing
+    if (self._processing &#x3c;= 0) {
+      if (sync) {
+        process.nextTick(function () {
+          self._finish()
+        })
+      } else {
+        self._finish()
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var Glob = require(&#x22;glob&#x22;).Glob
+var mg = new Glob(pattern, options, cb)
+```
+
+It&#x27;s an EventEmitter, and starts walking the filesystem to find matches
+immediately.
+
+### new glob.<span class="apidocCodeKeywordSpan">Glob</span>(pattern, [options], [cb])
+
+* `pattern` `{String}` pattern to search for
+* `options` `{Object}`
+* `cb` `{Function}` Called when an error occurs, or matches are found
+* `err` `{Error | null}`
+* `matches` `{Array&#x3c;String&#x3e;}` filenames found matching the pattern
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.super_" id="apidoc.element.glob.Glob.super_">
+        function <span class="apidocSignatureSpan">glob.Glob.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.glob.Glob.prototype" id="apidoc.module.glob.Glob.prototype">module glob.Glob.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._emitMatch" id="apidoc.element.glob.Glob.prototype._emitMatch">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_emitMatch
+        <span class="apidocSignatureSpan">(index, e)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_emitMatch = function (index, e) {
+  if (this.aborted)
+    return
+
+  if (isIgnored(this, e))
+    return
+
+  if (this.paused) {
+    this._emitQueue.push([index, e])
+    return
+  }
+
+  var abs = isAbsolute(e) ? e : this._makeAbs(e)
+
+  if (this.mark)
+    e = this._mark(e)
+
+  if (this.absolute)
+    e = abs
+
+  if (this.matches[index][e])
+    return
+
+  if (this.nodir) {
+    var c = this.cache[abs]
+    if (c === &#x27;DIR&#x27; || Array.isArray(c))
+      return
+  }
+
+  this.matches[index][e] = true
+
+  var st = this.statCache[abs]
+  if (st)
+    this.emit(&#x27;stat&#x27;, e, st)
+
+  this.emit(&#x27;match&#x27;, e)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this.emit(&#x27;resume&#x27;)
+this.paused = false
+if (this._emitQueue.length) {
+  var eq = this._emitQueue.slice(0)
+  this._emitQueue.length = 0
+  for (var i = 0; i &#x3c; eq.length; i ++) {
+    var e = eq[i]
+    this.<span class="apidocCodeKeywordSpan">_emitMatch</span>(e[0], e[1])
+  }
+}
+if (this._processQueue.length) {
+  var pq = this._processQueue.slice(0)
+  this._processQueue.length = 0
+  for (var i = 0; i &#x3c; pq.length; i ++) {
+    var p = pq[i]
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._finish" id="apidoc.element.glob.Glob.prototype._finish">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_finish
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_finish = function () {
+  assert(this instanceof Glob)
+  if (this.aborted)
+    return
+
+  if (this.realpath &#x26;&#x26; !this._didRealpath)
+    return this._realpath()
+
+  common.finish(this)
+  this.emit(&#x27;end&#x27;, this.found)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  sync = false
+
+  function done () {
+    --self._processing
+    if (self._processing &#x3c;= 0) {
+      if (sync) {
+        process.nextTick(function () {
+          self.<span class="apidocCodeKeywordSpan">_finish</span>()
+        })
+      } else {
+        self._finish()
+      }
+    }
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._makeAbs" id="apidoc.element.glob.Glob.prototype._makeAbs">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_makeAbs
+        <span class="apidocSignatureSpan">(f)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_makeAbs = function (f) {
+  return common.makeAbs(this, f)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return cb()
+
+var set = this.matches[index] = Object.create(null)
+found.forEach(function (p, i) {
+  // If there&#x27;s a problem with the stat, then it means that
+  // one or more of the links in the realpath couldn&#x27;t be
+  // resolved.  just return the abs value in that case.
+  p = self.<span class="apidocCodeKeywordSpan">_makeAbs</span>(p)
+  rp.realpath(p, self.realpathCache, function (er, real) {
+    if (!er)
+      set[real] = true
+    else if (er.syscall === &#x27;stat&#x27;)
+      set[p] = true
+    else
+      self.emit(&#x27;error&#x27;, er) // srsly wtf right here
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._mark" id="apidoc.element.glob.Glob.prototype._mark">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_mark
+        <span class="apidocSignatureSpan">(p)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_mark = function (p) {
+  return common.mark(this, p)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this._emitQueue.push([index, e])
+  return
+}
+
+var abs = isAbsolute(e) ? e : this._makeAbs(e)
+
+if (this.mark)
+  e = this.<span class="apidocCodeKeywordSpan">_mark</span>(e)
+
+if (this.absolute)
+  e = abs
+
+if (this.matches[index][e])
+  return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._process" id="apidoc.element.glob.Glob.prototype._process">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_process
+        <span class="apidocSignatureSpan">(pattern, index, inGlobStar, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_process = function (pattern, index, inGlobStar, cb) {
+  assert(this instanceof Glob)
+  assert(typeof cb === &#x27;function&#x27;)
+
+  if (this.aborted)
+    return
+
+  this._processing++
+  if (this.paused) {
+    this._processQueue.push([pattern, index, inGlobStar, cb])
+    return
+  }
+
+  //console.error(&#x27;PROCESS %d&#x27;, this._processing, pattern)
+
+  // Get the first [n] parts of pattern that are all strings.
+  var n = 0
+  while (typeof pattern[n] === &#x27;string&#x27;) {
+    n ++
+  }
+  // now n is the index of the first one that is *not* a string.
+
+  // see if there&#x27;s anything else
+  var prefix
+  switch (n) {
+    // if not, then this is rather simple
+    case pattern.length:
+      this._processSimple(pattern.join(&#x27;/&#x27;), index, cb)
+      return
+
+    case 0:
+      // pattern *starts* with some non-trivial item.
+      // going to readdir(cwd), but not include the prefix in matches.
+      prefix = null
+      break
+
+    default:
+      // pattern has some string bits in the front.
+      // whatever it starts with, whether that&#x27;s &#x27;absolute&#x27; like /foo/bar,
+      // or &#x27;relative&#x27; like &#x27;../baz&#x27;
+      prefix = pattern.slice(0, n).join(&#x27;/&#x27;)
+      break
+  }
+
+  var remain = pattern.slice(n)
+
+  // get the list of entries.
+  var read
+  if (prefix === null)
+    read = &#x27;.&#x27;
+  else if (isAbsolute(prefix) || isAbsolute(pattern.join(&#x27;/&#x27;))) {
+    if (!prefix || !isAbsolute(prefix))
+      prefix = &#x27;/&#x27; + prefix
+    read = prefix
+  } else
+    read = prefix
+
+  var abs = this._makeAbs(read)
+
+  //if ignored, skip _processing
+  if (childrenIgnored(this, read))
+    return cb()
+
+  var isGlobStar = remain[0] === minimatch.GLOBSTAR
+  if (isGlobStar)
+    this._processGlobStar(prefix, read, abs, remain, index, inGlobStar, cb)
+  else
+    this._processReaddir(prefix, read, abs, remain, index, inGlobStar, cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return this
+
+if (n === 0)
+  return done()
+
+var sync = true
+for (var i = 0; i &#x3c; n; i ++) {
+  this.<span class="apidocCodeKeywordSpan">_process</span>(this.minimatch.set[i], i, false, done)
+}
+sync = false
+
+function done () {
+  --self._processing
+  if (self._processing &#x3c;= 0) {
+    if (sync) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._processGlobStar" id="apidoc.element.glob.Glob.prototype._processGlobStar">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processGlobStar
+        <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_processGlobStar = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+  var self = this
+  this._readdir(abs, inGlobStar, function (er, entries) {
+    self._processGlobStar2(prefix, read, abs, remain, index, inGlobStar, entries, cb)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+//if ignored, skip _processing
+if (childrenIgnored(this, read))
+  return cb()
+
+var isGlobStar = remain[0] === minimatch.GLOBSTAR
+if (isGlobStar)
+  this.<span class="apidocCodeKeywordSpan">_processGlobStar</span>(prefix, read, abs, remain, index, inGlobStar, cb)
+else
+  this._processReaddir(prefix, read, abs, remain, index, inGlobStar, cb)
+}
+
+Glob.prototype._processReaddir = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+var self = this
+this._readdir(abs, inGlobStar, function (er, entries) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._processGlobStar2" id="apidoc.element.glob.Glob.prototype._processGlobStar2">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processGlobStar2
+        <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar, entries, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_processGlobStar2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
+  //console.error(&#x27;pgs2&#x27;, prefix, remain[0], entries)
+
+  // no entries means not a dir, so it can never have matches
+  // foo.txt/** doesn&#x27;t match foo.txt
+  if (!entries)
+    return cb()
+
+  // test without the globstar, and with every child both below
+  // and replacing the globstar.
+  var remainWithoutGlobStar = remain.slice(1)
+  var gspref = prefix ? [ prefix ] : []
+  var noGlobStar = gspref.concat(remainWithoutGlobStar)
+
+  // the noGlobStar pattern exits the inGlobStar state
+  this._process(noGlobStar, index, false, cb)
+
+  var isSym = this.symlinks[abs]
+  var len = entries.length
+
+  // If it&#x27;s a symlink, and we&#x27;re in a globstar, then stop
+  if (isSym &#x26;&#x26; inGlobStar)
+    return cb()
+
+  for (var i = 0; i &#x3c; len; i++) {
+    var e = entries[i]
+    if (e.charAt(0) === &#x27;.&#x27; &#x26;&#x26; !this.dot)
+      continue
+
+    // these two cases enter the inGlobStar state
+    var instead = gspref.concat(entries[i], remainWithoutGlobStar)
+    this._process(instead, index, true, cb)
+
+    var below = gspref.concat(entries[i], remain)
+    this._process(below, index, true, cb)
+  }
+
+  cb()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+return cb()
+}
+
+Glob.prototype._processGlobStar = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+var self = this
+this._readdir(abs, inGlobStar, function (er, entries) {
+  self.<span class="apidocCodeKeywordSpan">_processGlobStar2</span>(prefix, read, abs, remain, index, inGlobStar, entries, cb)
+})
+}
+
+
+Glob.prototype._processGlobStar2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
+//console.error(&#x27;pgs2&#x27;, prefix, remain[0], entries)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._processReaddir" id="apidoc.element.glob.Glob.prototype._processReaddir">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processReaddir
+        <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_processReaddir = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+  var self = this
+  this._readdir(abs, inGlobStar, function (er, entries) {
+    return self._processReaddir2(prefix, read, abs, remain, index, inGlobStar, entries, cb)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (childrenIgnored(this, read))
+  return cb()
+
+var isGlobStar = remain[0] === minimatch.GLOBSTAR
+if (isGlobStar)
+  this._processGlobStar(prefix, read, abs, remain, index, inGlobStar, cb)
+else
+  this.<span class="apidocCodeKeywordSpan">_processReaddir</span>(prefix, read, abs, remain, index, inGlobStar, cb)
+}
+
+Glob.prototype._processReaddir = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+var self = this
+this._readdir(abs, inGlobStar, function (er, entries) {
+  return self._processReaddir2(prefix, read, abs, remain, index, inGlobStar, entries, cb)
+})
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._processReaddir2" id="apidoc.element.glob.Glob.prototype._processReaddir2">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processReaddir2
+        <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar, entries, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_processReaddir2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
+
+  // if the abs isn&#x27;t a dir, then nothing can match!
+  if (!entries)
+    return cb()
+
+  // It will only match dot entries if it starts with a dot, or if
+  // dot is set.  Stuff like @(.foo|.bar) isn&#x27;t allowed.
+  var pn = remain[0]
+  var negate = !!this.minimatch.negate
+  var rawGlob = pn._glob
+  var dotOk = this.dot || rawGlob.charAt(0) === &#x27;.&#x27;
+
+  var matchedEntries = []
+  for (var i = 0; i &#x3c; entries.length; i++) {
+    var e = entries[i]
+    if (e.charAt(0) !== &#x27;.&#x27; || dotOk) {
+      var m
+      if (negate &#x26;&#x26; !prefix) {
+        m = !e.match(pn)
+      } else {
+        m = e.match(pn)
+      }
+      if (m)
+        matchedEntries.push(e)
+    }
+  }
+
+  //console.error(&#x27;prd2&#x27;, prefix, entries, remain[0]._glob, matchedEntries)
+
+  var len = matchedEntries.length
+  // If there are no matched entries, then nothing matches.
+  if (len === 0)
+    return cb()
+
+  // if this is the last remaining pattern bit, then no need for
+  // an additional stat *unless* the user has specified mark or
+  // stat explicitly.  We know they exist, since readdir returned
+  // them.
+
+  if (remain.length === 1 &#x26;&#x26; !this.mark &#x26;&#x26; !this.stat) {
+    if (!this.matches[index])
+      this.matches[index] = Object.create(null)
+
+    for (var i = 0; i &#x3c; len; i ++) {
+      var e = matchedEntries[i]
+      if (prefix) {
+        if (prefix !== &#x27;/&#x27;)
+          e = prefix + &#x27;/&#x27; + e
+        else
+          e = prefix + e
+      }
+
+      if (e.charAt(0) === &#x27;/&#x27; &#x26;&#x26; !this.nomount) {
+        e = path.join(this.root, e)
+      }
+      this._emitMatch(index, e)
+    }
+    // This was the last one, and no stats were needed
+    return cb()
+  }
+
+  // now test all matched entries as stand-ins for that part
+  // of the pattern.
+  remain.shift()
+  for (var i = 0; i &#x3c; len; i ++) {
+    var e = matchedEntries[i]
+    var newPattern
+    if (prefix) {
+      if (prefix !== &#x27;/&#x27;)
+        e = prefix + &#x27;/&#x27; + e
+      else
+        e = prefix + e
+    }
+    this._process([e].concat(remain), index, inGlobStar, cb)
+  }
+  cb()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+else
+  this._processReaddir(prefix, read, abs, remain, index, inGlobStar, cb)
+}
+
+Glob.prototype._processReaddir = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+var self = this
+this._readdir(abs, inGlobStar, function (er, entries) {
+  return self.<span class="apidocCodeKeywordSpan">_processReaddir2</span>(prefix, read, abs, remain, index, inGlobStar, entries,
+cb)
+})
+}
+
+Glob.prototype._processReaddir2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
+
+// if the abs isn&#x27;t a dir, then nothing can match!
+if (!entries)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._processSimple" id="apidoc.element.glob.Glob.prototype._processSimple">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processSimple
+        <span class="apidocSignatureSpan">(prefix, index, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_processSimple = function (prefix, index, cb) {
+  // XXX review this.  Shouldn&#x27;t it be doing the mounting etc
+  // before doing stat?  kinda weird?
+  var self = this
+  this._stat(prefix, function (er, exists) {
+    self._processSimple2(prefix, index, er, exists, cb)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // now n is the index of the first one that is *not* a string.
+
+  // see if there&#x27;s anything else
+  var prefix
+  switch (n) {
+// if not, then this is rather simple
+case pattern.length:
+  this.<span class="apidocCodeKeywordSpan">_processSimple</span>(pattern.join(&#x27;/&#x27;), index, cb)
+  return
+
+case 0:
+  // pattern *starts* with some non-trivial item.
+  // going to readdir(cwd), but not include the prefix in matches.
+  prefix = null
+  break
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._processSimple2" id="apidoc.element.glob.Glob.prototype._processSimple2">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_processSimple2
+        <span class="apidocSignatureSpan">(prefix, index, er, exists, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_processSimple2 = function (prefix, index, er, exists, cb) {
+
+  //console.error(&#x27;ps2&#x27;, prefix, exists)
+
+  if (!this.matches[index])
+    this.matches[index] = Object.create(null)
+
+  // If it doesn&#x27;t exist, then just mark the lack of results
+  if (!exists)
+    return cb()
+
+  if (prefix &#x26;&#x26; isAbsolute(prefix) &#x26;&#x26; !this.nomount) {
+    var trail = /[\/\\]$/.test(prefix)
+    if (prefix.charAt(0) === &#x27;/&#x27;) {
+      prefix = path.join(this.root, prefix)
+    } else {
+      prefix = path.resolve(this.root, prefix)
+      if (trail)
+        prefix += &#x27;/&#x27;
+    }
+  }
+
+  if (process.platform === &#x27;win32&#x27;)
+    prefix = prefix.replace(/\\/g, &#x27;/&#x27;)
+
+  // Mark this as a match
+  this._emitMatch(index, prefix)
+  cb()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+Glob.prototype._processSimple = function (prefix, index, cb) {
+// XXX review this.  Shouldn&#x27;t it be doing the mounting etc
+// before doing stat?  kinda weird?
+var self = this
+this._stat(prefix, function (er, exists) {
+  self.<span class="apidocCodeKeywordSpan">_processSimple2</span>(prefix, index, er, exists, cb)
+})
+}
+Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
+
+//console.error(&#x27;ps2&#x27;, prefix, exists)
+
+if (!this.matches[index])
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._readdir" id="apidoc.element.glob.Glob.prototype._readdir">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_readdir
+        <span class="apidocSignatureSpan">(abs, inGlobStar, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_readdir = function (abs, inGlobStar, cb) {
+  if (this.aborted)
+    return
+
+  cb = inflight(&#x27;readdir\0&#x27;+abs+&#x27;\0&#x27;+inGlobStar, cb)
+  if (!cb)
+    return
+
+  //console.error(&#x27;RD %j %j&#x27;, +inGlobStar, abs)
+  if (inGlobStar &#x26;&#x26; !ownProp(this.symlinks, abs))
+    return this._readdirInGlobStar(abs, cb)
+
+  if (ownProp(this.cache, abs)) {
+    var c = this.cache[abs]
+    if (!c || c === &#x27;FILE&#x27;)
+      return cb()
+
+    if (Array.isArray(c))
+      return cb(null, c)
+  }
+
+  var self = this
+  fs.readdir(abs, readdirCb(this, abs, cb))
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this._processGlobStar(prefix, read, abs, remain, index, inGlobStar, cb)
+else
+  this._processReaddir(prefix, read, abs, remain, index, inGlobStar, cb)
+}
+
+Glob.prototype._processReaddir = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+var self = this
+this.<span class="apidocCodeKeywordSpan">_readdir</span>(abs, inGlobStar, function (er, entries) {
+  return self._processReaddir2(prefix, read, abs, remain, index, inGlobStar, entries, cb)
+})
+}
+
+Glob.prototype._processReaddir2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
+
+// if the abs isn&#x27;t a dir, then nothing can match!
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._readdirEntries" id="apidoc.element.glob.Glob.prototype._readdirEntries">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_readdirEntries
+        <span class="apidocSignatureSpan">(abs, entries, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_readdirEntries = function (abs, entries, cb) {
+  if (this.aborted)
+    return
+
+  // if we haven&#x27;t asked to stat everything, then just
+  // assume that everything in there exists, so we can avoid
+  // having to stat it a second time.
+  if (!this.mark &#x26;&#x26; !this.stat) {
+    for (var i = 0; i &#x3c; entries.length; i ++) {
+      var e = entries[i]
+      if (abs === &#x27;/&#x27;)
+        e = abs + e
+      else
+        e = abs + &#x27;/&#x27; + e
+      this.cache[e] = true
+    }
+  }
+
+  this.cache[abs] = entries
+  return cb(null, entries)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+function readdirCb (self, abs, cb) {
+return function (er, entries) {
+  if (er)
+    self._readdirError(abs, er, cb)
+  else
+    self.<span class="apidocCodeKeywordSpan">_readdirEntries</span>(abs, entries, cb)
+}
+}
+
+Glob.prototype._readdirEntries = function (abs, entries, cb) {
+if (this.aborted)
+  return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._readdirError" id="apidoc.element.glob.Glob.prototype._readdirError">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_readdirError
+        <span class="apidocSignatureSpan">(f, er, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_readdirError = function (f, er, cb) {
+  if (this.aborted)
+    return
+
+  // handle errors, and cache the information
+  switch (er.code) {
+    case &#x27;ENOTSUP&#x27;: // https://github.com/isaacs/node-glob/issues/205
+    case &#x27;ENOTDIR&#x27;: // totally normal. means it *does* exist.
+      var abs = this._makeAbs(f)
+      this.cache[abs] = &#x27;FILE&#x27;
+      if (abs === this.cwdAbs) {
+        var error = new Error(er.code + &#x27; invalid cwd &#x27; + this.cwd)
+        error.path = this.cwd
+        error.code = er.code
+        this.emit(&#x27;error&#x27;, error)
+        this.abort()
+      }
+      break
+
+    case &#x27;ENOENT&#x27;: // not terribly unusual
+    case &#x27;ELOOP&#x27;:
+    case &#x27;ENAMETOOLONG&#x27;:
+    case &#x27;UNKNOWN&#x27;:
+      this.cache[this._makeAbs(f)] = false
+      break
+
+    default: // some unusual error.  Treat as failure.
+      this.cache[this._makeAbs(f)] = false
+      if (this.strict) {
+        this.emit(&#x27;error&#x27;, er)
+        // If the error is handled, then we abort
+        // if not, we threw out of here
+        this.abort()
+      }
+      if (!this.silent)
+        console.error(&#x27;glob error&#x27;, er)
+      break
+  }
+
+  return cb()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var self = this
+fs.readdir(abs, readdirCb(this, abs, cb))
+}
+
+function readdirCb (self, abs, cb) {
+return function (er, entries) {
+  if (er)
+    self.<span class="apidocCodeKeywordSpan">_readdirError</span>(abs, er, cb)
+  else
+    self._readdirEntries(abs, entries, cb)
+}
+}
+
+Glob.prototype._readdirEntries = function (abs, entries, cb) {
+if (this.aborted)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._readdirInGlobStar" id="apidoc.element.glob.Glob.prototype._readdirInGlobStar">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_readdirInGlobStar
+        <span class="apidocSignatureSpan">(abs, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_readdirInGlobStar = function (abs, cb) {
+  if (this.aborted)
+    return
+
+  // follow all symlinked directories forever
+  // just proceed as if this is a non-globstar situation
+  if (this.follow)
+    return this._readdir(abs, false, cb)
+
+  var lstatkey = &#x27;lstat\0&#x27; + abs
+  var self = this
+  var lstatcb = inflight(lstatkey, lstatcb_)
+
+  if (lstatcb)
+    fs.lstat(abs, lstatcb)
+
+  function lstatcb_ (er, lstat) {
+    if (er &#x26;&#x26; er.code === &#x27;ENOENT&#x27;)
+      return cb()
+
+    var isSym = lstat &#x26;&#x26; lstat.isSymbolicLink()
+    self.symlinks[abs] = isSym
+
+    // If it&#x27;s not a symlink or a dir, then it&#x27;s definitely a regular file.
+    // don&#x27;t bother doing a readdir in that case.
+    if (!isSym &#x26;&#x26; lstat &#x26;&#x26; !lstat.isDirectory()) {
+      self.cache[abs] = &#x27;FILE&#x27;
+      cb()
+    } else
+      self._readdir(abs, false, cb)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  cb = inflight(&#x27;readdir\0&#x27;+abs+&#x27;\0&#x27;+inGlobStar, cb)
+  if (!cb)
+return
+
+  //console.error(&#x27;RD %j %j&#x27;, +inGlobStar, abs)
+  if (inGlobStar &#x26;&#x26; !ownProp(this.symlinks, abs))
+return this.<span class="apidocCodeKeywordSpan">_readdirInGlobStar</span>(abs, cb)
+
+  if (ownProp(this.cache, abs)) {
+var c = this.cache[abs]
+if (!c || c === &#x27;FILE&#x27;)
+  return cb()
+
+if (Array.isArray(c))
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._realpath" id="apidoc.element.glob.Glob.prototype._realpath">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_realpath
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_realpath = function () {
+  if (this._didRealpath)
+    return
+
+  this._didRealpath = true
+
+  var n = this.matches.length
+  if (n === 0)
+    return this._finish()
+
+  var self = this
+  for (var i = 0; i &#x3c; this.matches.length; i++)
+    this._realpathSet(i, next)
+
+  function next () {
+    if (--n === 0)
+      self._finish()
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Glob.prototype._finish = function () {
+assert(this instanceof Glob)
+if (this.aborted)
+  return
+
+if (this.realpath &#x26;&#x26; !this._didRealpath)
+  return this.<span class="apidocCodeKeywordSpan">_realpath</span>()
+
+common.finish(this)
+this.emit(&#x27;end&#x27;, this.found)
+}
+
+Glob.prototype._realpath = function () {
+if (this._didRealpath)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._realpathSet" id="apidoc.element.glob.Glob.prototype._realpathSet">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_realpathSet
+        <span class="apidocSignatureSpan">(index, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_realpathSet = function (index, cb) {
+  var matchset = this.matches[index]
+  if (!matchset)
+    return cb()
+
+  var found = Object.keys(matchset)
+  var self = this
+  var n = found.length
+
+  if (n === 0)
+    return cb()
+
+  var set = this.matches[index] = Object.create(null)
+  found.forEach(function (p, i) {
+    // If there&#x27;s a problem with the stat, then it means that
+    // one or more of the links in the realpath couldn&#x27;t be
+    // resolved.  just return the abs value in that case.
+    p = self._makeAbs(p)
+    rp.realpath(p, self.realpathCache, function (er, real) {
+      if (!er)
+        set[real] = true
+      else if (er.syscall === &#x27;stat&#x27;)
+        set[p] = true
+      else
+        self.emit(&#x27;error&#x27;, er) // srsly wtf right here
+
+      if (--n === 0) {
+        self.matches[index] = set
+        cb()
+      }
+    })
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  var n = this.matches.length
+  if (n === 0)
+    return this._finish()
+
+  var self = this
+  for (var i = 0; i &#x3c; this.matches.length; i++)
+    this.<span class="apidocCodeKeywordSpan">_realpathSet</span>(i, next)
+
+  function next () {
+    if (--n === 0)
+      self._finish()
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._stat" id="apidoc.element.glob.Glob.prototype._stat">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_stat
+        <span class="apidocSignatureSpan">(f, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_stat = function (f, cb) {
+  var abs = this._makeAbs(f)
+  var needDir = f.slice(-1) === &#x27;/&#x27;
+
+  if (f.length &#x3e; this.maxLength)
+    return cb()
+
+  if (!this.stat &#x26;&#x26; ownProp(this.cache, abs)) {
+    var c = this.cache[abs]
+
+    if (Array.isArray(c))
+      c = &#x27;DIR&#x27;
+
+    // It exists, but maybe not how we need it
+    if (!needDir || c === &#x27;DIR&#x27;)
+      return cb(null, c)
+
+    if (needDir &#x26;&#x26; c === &#x27;FILE&#x27;)
+      return cb()
+
+    // otherwise we have to stat, because maybe c=true
+    // if we know it exists, but not what it is.
+  }
+
+  var exists
+  var stat = this.statCache[abs]
+  if (stat !== undefined) {
+    if (stat === false)
+      return cb(null, stat)
+    else {
+      var type = stat.isDirectory() ? &#x27;DIR&#x27; : &#x27;FILE&#x27;
+      if (needDir &#x26;&#x26; type === &#x27;FILE&#x27;)
+        return cb()
+      else
+        return cb(null, type, stat)
+    }
+  }
+
+  var self = this
+  var statcb = inflight(&#x27;stat\0&#x27; + abs, lstatcb_)
+  if (statcb)
+    fs.lstat(abs, statcb)
+
+  function lstatcb_ (er, lstat) {
+    if (lstat &#x26;&#x26; lstat.isSymbolicLink()) {
+      // If it&#x27;s a symlink, then treat it as the target, unless
+      // the target does not exist, then treat it as a file.
+      return fs.stat(abs, function (er, stat) {
+        if (er)
+          self._stat2(f, abs, null, lstat, cb)
+        else
+          self._stat2(f, abs, er, stat, cb)
+      })
+    } else {
+      self._stat2(f, abs, er, lstat, cb)
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+cb()
+}
+
+Glob.prototype._processSimple = function (prefix, index, cb) {
+// XXX review this.  Shouldn&#x27;t it be doing the mounting etc
+// before doing stat?  kinda weird?
+var self = this
+this.<span class="apidocCodeKeywordSpan">_stat</span>(prefix, function (er, exists) {
+  self._processSimple2(prefix, index, er, exists, cb)
+})
+}
+Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
+
+//console.error(&#x27;ps2&#x27;, prefix, exists)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype._stat2" id="apidoc.element.glob.Glob.prototype._stat2">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>_stat2
+        <span class="apidocSignatureSpan">(f, abs, er, stat, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_stat2 = function (f, abs, er, stat, cb) {
+  if (er &#x26;&#x26; (er.code === &#x27;ENOENT&#x27; || er.code === &#x27;ENOTDIR&#x27;)) {
+    this.statCache[abs] = false
+    return cb()
+  }
+
+  var needDir = f.slice(-1) === &#x27;/&#x27;
+  this.statCache[abs] = stat
+
+  if (abs.slice(-1) === &#x27;/&#x27; &#x26;&#x26; stat &#x26;&#x26; !stat.isDirectory())
+    return cb(null, false, stat)
+
+  var c = true
+  if (stat)
+    c = stat.isDirectory() ? &#x27;DIR&#x27; : &#x27;FILE&#x27;
+  this.cache[abs] = this.cache[abs] || c
+
+  if (needDir &#x26;&#x26; c === &#x27;FILE&#x27;)
+    return cb()
+
+  return cb(null, c, stat)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function lstatcb_ (er, lstat) {
+  if (lstat &#x26;&#x26; lstat.isSymbolicLink()) {
+    // If it&#x27;s a symlink, then treat it as the target, unless
+    // the target does not exist, then treat it as a file.
+    return fs.stat(abs, function (er, stat) {
+      if (er)
+        self.<span class="apidocCodeKeywordSpan">_stat2</span>(f, abs, null, lstat, cb)
+      else
+        self._stat2(f, abs, er, stat, cb)
+    })
+  } else {
+    self._stat2(f, abs, er, lstat, cb)
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype.abort" id="apidoc.element.glob.Glob.prototype.abort">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>abort
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">abort = function () {
+  this.aborted = true
+  this.emit(&#x27;abort&#x27;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var abs = this._makeAbs(f)
+  this.cache[abs] = &#x27;FILE&#x27;
+  if (abs === this.cwdAbs) {
+    var error = new Error(er.code + &#x27; invalid cwd &#x27; + this.cwd)
+    error.path = this.cwd
+    error.code = er.code
+    this.emit(&#x27;error&#x27;, error)
+    this.<span class="apidocCodeKeywordSpan">abort</span>()
+  }
+  break
+
+case &#x27;ENOENT&#x27;: // not terribly unusual
+case &#x27;ELOOP&#x27;:
+case &#x27;ENAMETOOLONG&#x27;:
+case &#x27;UNKNOWN&#x27;:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype.pause" id="apidoc.element.glob.Glob.prototype.pause">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>pause
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function () {
+  if (!this.paused) {
+    this.paused = true
+    this.emit(&#x27;pause&#x27;)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.Glob.prototype.resume" id="apidoc.element.glob.Glob.prototype.resume">
+        function <span class="apidocSignatureSpan">glob.Glob.prototype.</span>resume
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function () {
+  if (this.paused) {
+    this.emit(&#x27;resume&#x27;)
+    this.paused = false
+    if (this._emitQueue.length) {
+      var eq = this._emitQueue.slice(0)
+      this._emitQueue.length = 0
+      for (var i = 0; i &#x3c; eq.length; i ++) {
+        var e = eq[i]
+        this._emitMatch(e[0], e[1])
+      }
+    }
+    if (this._processQueue.length) {
+      var pq = this._processQueue.slice(0)
+      this._processQueue.length = 0
+      for (var i = 0; i &#x3c; pq.length; i ++) {
+        var p = pq[i]
+        this._processing--
+        this._process(p[0], p[1], p[2], p[3])
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.glob.GlobSync" id="apidoc.module.glob.GlobSync">module glob.GlobSync</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.GlobSync" id="apidoc.element.glob.GlobSync.GlobSync">
+        function <span class="apidocSignatureSpan">glob.</span>GlobSync
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function GlobSync(pattern, options) {
+  if (!pattern)
+    throw new Error(&#x27;must provide pattern&#x27;)
+
+  if (typeof options === &#x27;function&#x27; || arguments.length === 3)
+    throw new TypeError(&#x27;callback provided to sync glob\n&#x27;+
+                        &#x27;See: https://github.com/isaacs/node-glob/issues/167&#x27;)
+
+  if (!(this instanceof GlobSync))
+    return new GlobSync(pattern, options)
+
+  setopts(this, pattern, options)
+
+  if (this.noprocess)
+    return this
+
+  var n = this.minimatch.set.length
+  this.matches = new Array(n)
+  for (var i = 0; i &#x3c; n; i ++) {
+    this._process(this.minimatch.set[i], i, false)
+  }
+  this._finish()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.glob.GlobSync.prototype" id="apidoc.module.glob.GlobSync.prototype">module glob.GlobSync.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._emitMatch" id="apidoc.element.glob.GlobSync.prototype._emitMatch">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_emitMatch
+        <span class="apidocSignatureSpan">(index, e)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_emitMatch = function (index, e) {
+  if (isIgnored(this, e))
+    return
+
+  var abs = this._makeAbs(e)
+
+  if (this.mark)
+    e = this._mark(e)
+
+  if (this.absolute) {
+    e = abs
+  }
+
+  if (this.matches[index][e])
+    return
+
+  if (this.nodir) {
+    var c = this.cache[abs]
+    if (c === &#x27;DIR&#x27; || Array.isArray(c))
+      return
+  }
+
+  this.matches[index][e] = true
+
+  if (this.stat)
+    this._stat(e)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this.emit(&#x27;resume&#x27;)
+this.paused = false
+if (this._emitQueue.length) {
+  var eq = this._emitQueue.slice(0)
+  this._emitQueue.length = 0
+  for (var i = 0; i &#x3c; eq.length; i ++) {
+    var e = eq[i]
+    this.<span class="apidocCodeKeywordSpan">_emitMatch</span>(e[0], e[1])
+  }
+}
+if (this._processQueue.length) {
+  var pq = this._processQueue.slice(0)
+  this._processQueue.length = 0
+  for (var i = 0; i &#x3c; pq.length; i ++) {
+    var p = pq[i]
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._finish" id="apidoc.element.glob.GlobSync.prototype._finish">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_finish
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_finish = function () {
+  assert(this instanceof GlobSync)
+  if (this.realpath) {
+    var self = this
+    this.matches.forEach(function (matchset, index) {
+      var set = self.matches[index] = Object.create(null)
+      for (var p in matchset) {
+        try {
+          p = self._makeAbs(p)
+          var real = rp.realpathSync(p, self.realpathCache)
+          set[real] = true
+        } catch (er) {
+          if (er.syscall === &#x27;stat&#x27;)
+            set[self._makeAbs(p)] = true
+          else
+            throw er
+        }
+      }
+    })
+  }
+  common.finish(this)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  sync = false
+
+  function done () {
+    --self._processing
+    if (self._processing &#x3c;= 0) {
+      if (sync) {
+        process.nextTick(function () {
+          self.<span class="apidocCodeKeywordSpan">_finish</span>()
+        })
+      } else {
+        self._finish()
+      }
+    }
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._makeAbs" id="apidoc.element.glob.GlobSync.prototype._makeAbs">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_makeAbs
+        <span class="apidocSignatureSpan">(f)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_makeAbs = function (f) {
+  return common.makeAbs(this, f)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return cb()
+
+var set = this.matches[index] = Object.create(null)
+found.forEach(function (p, i) {
+  // If there&#x27;s a problem with the stat, then it means that
+  // one or more of the links in the realpath couldn&#x27;t be
+  // resolved.  just return the abs value in that case.
+  p = self.<span class="apidocCodeKeywordSpan">_makeAbs</span>(p)
+  rp.realpath(p, self.realpathCache, function (er, real) {
+    if (!er)
+      set[real] = true
+    else if (er.syscall === &#x27;stat&#x27;)
+      set[p] = true
+    else
+      self.emit(&#x27;error&#x27;, er) // srsly wtf right here
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._mark" id="apidoc.element.glob.GlobSync.prototype._mark">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_mark
+        <span class="apidocSignatureSpan">(p)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_mark = function (p) {
+  return common.mark(this, p)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this._emitQueue.push([index, e])
+  return
+}
+
+var abs = isAbsolute(e) ? e : this._makeAbs(e)
+
+if (this.mark)
+  e = this.<span class="apidocCodeKeywordSpan">_mark</span>(e)
+
+if (this.absolute)
+  e = abs
+
+if (this.matches[index][e])
+  return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._process" id="apidoc.element.glob.GlobSync.prototype._process">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_process
+        <span class="apidocSignatureSpan">(pattern, index, inGlobStar)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_process = function (pattern, index, inGlobStar) {
+  assert(this instanceof GlobSync)
+
+  // Get the first [n] parts of pattern that are all strings.
+  var n = 0
+  while (typeof pattern[n] === &#x27;string&#x27;) {
+    n ++
+  }
+  // now n is the index of the first one that is *not* a string.
+
+  // See if there&#x27;s anything else
+  var prefix
+  switch (n) {
+    // if not, then this is rather simple
+    case pattern.length:
+      this._processSimple(pattern.join(&#x27;/&#x27;), index)
+      return
+
+    case 0:
+      // pattern *starts* with some non-trivial item.
+      // going to readdir(cwd), but not include the prefix in matches.
+      prefix = null
+      break
+
+    default:
+      // pattern has some string bits in the front.
+      // whatever it starts with, whether that&#x27;s &#x27;absolute&#x27; like /foo/bar,
+      // or &#x27;relative&#x27; like &#x27;../baz&#x27;
+      prefix = pattern.slice(0, n).join(&#x27;/&#x27;)
+      break
+  }
+
+  var remain = pattern.slice(n)
+
+  // get the list of entries.
+  var read
+  if (prefix === null)
+    read = &#x27;.&#x27;
+  else if (isAbsolute(prefix) || isAbsolute(pattern.join(&#x27;/&#x27;))) {
+    if (!prefix || !isAbsolute(prefix))
+      prefix = &#x27;/&#x27; + prefix
+    read = prefix
+  } else
+    read = prefix
+
+  var abs = this._makeAbs(read)
+
+  //if ignored, skip processing
+  if (childrenIgnored(this, read))
+    return
+
+  var isGlobStar = remain[0] === minimatch.GLOBSTAR
+  if (isGlobStar)
+    this._processGlobStar(prefix, read, abs, remain, index, inGlobStar)
+  else
+    this._processReaddir(prefix, read, abs, remain, index, inGlobStar)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return this
+
+if (n === 0)
+  return done()
+
+var sync = true
+for (var i = 0; i &#x3c; n; i ++) {
+  this.<span class="apidocCodeKeywordSpan">_process</span>(this.minimatch.set[i], i, false, done)
+}
+sync = false
+
+function done () {
+  --self._processing
+  if (self._processing &#x3c;= 0) {
+    if (sync) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._processGlobStar" id="apidoc.element.glob.GlobSync.prototype._processGlobStar">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_processGlobStar
+        <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_processGlobStar = function (prefix, read, abs, remain, index, inGlobStar) {
+
+  var entries = this._readdir(abs, inGlobStar)
+
+  // no entries means not a dir, so it can never have matches
+  // foo.txt/** doesn&#x27;t match foo.txt
+  if (!entries)
+    return
+
+  // test without the globstar, and with every child both below
+  // and replacing the globstar.
+  var remainWithoutGlobStar = remain.slice(1)
+  var gspref = prefix ? [ prefix ] : []
+  var noGlobStar = gspref.concat(remainWithoutGlobStar)
+
+  // the noGlobStar pattern exits the inGlobStar state
+  this._process(noGlobStar, index, false)
+
+  var len = entries.length
+  var isSym = this.symlinks[abs]
+
+  // If it&#x27;s a symlink, and we&#x27;re in a globstar, then stop
+  if (isSym &#x26;&#x26; inGlobStar)
+    return
+
+  for (var i = 0; i &#x3c; len; i++) {
+    var e = entries[i]
+    if (e.charAt(0) === &#x27;.&#x27; &#x26;&#x26; !this.dot)
+      continue
+
+    // these two cases enter the inGlobStar state
+    var instead = gspref.concat(entries[i], remainWithoutGlobStar)
+    this._process(instead, index, true)
+
+    var below = gspref.concat(entries[i], remain)
+    this._process(below, index, true)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+//if ignored, skip _processing
+if (childrenIgnored(this, read))
+  return cb()
+
+var isGlobStar = remain[0] === minimatch.GLOBSTAR
+if (isGlobStar)
+  this.<span class="apidocCodeKeywordSpan">_processGlobStar</span>(prefix, read, abs, remain, index, inGlobStar, cb)
+else
+  this._processReaddir(prefix, read, abs, remain, index, inGlobStar, cb)
+}
+
+Glob.prototype._processReaddir = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+var self = this
+this._readdir(abs, inGlobStar, function (er, entries) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._processReaddir" id="apidoc.element.glob.GlobSync.prototype._processReaddir">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_processReaddir
+        <span class="apidocSignatureSpan">(prefix, read, abs, remain, index, inGlobStar)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_processReaddir = function (prefix, read, abs, remain, index, inGlobStar) {
+  var entries = this._readdir(abs, inGlobStar)
+
+  // if the abs isn&#x27;t a dir, then nothing can match!
+  if (!entries)
+    return
+
+  // It will only match dot entries if it starts with a dot, or if
+  // dot is set.  Stuff like @(.foo|.bar) isn&#x27;t allowed.
+  var pn = remain[0]
+  var negate = !!this.minimatch.negate
+  var rawGlob = pn._glob
+  var dotOk = this.dot || rawGlob.charAt(0) === &#x27;.&#x27;
+
+  var matchedEntries = []
+  for (var i = 0; i &#x3c; entries.length; i++) {
+    var e = entries[i]
+    if (e.charAt(0) !== &#x27;.&#x27; || dotOk) {
+      var m
+      if (negate &#x26;&#x26; !prefix) {
+        m = !e.match(pn)
+      } else {
+        m = e.match(pn)
+      }
+      if (m)
+        matchedEntries.push(e)
+    }
+  }
+
+  var len = matchedEntries.length
+  // If there are no matched entries, then nothing matches.
+  if (len === 0)
+    return
+
+  // if this is the last remaining pattern bit, then no need for
+  // an additional stat *unless* the user has specified mark or
+  // stat explicitly.  We know they exist, since readdir returned
+  // them.
+
+  if (remain.length === 1 &#x26;&#x26; !this.mark &#x26;&#x26; !this.stat) {
+    if (!this.matches[index])
+      this.matches[index] = Object.create(null)
+
+    for (var i = 0; i &#x3c; len; i ++) {
+      var e = matchedEntries[i]
+      if (prefix) {
+        if (prefix.slice(-1) !== &#x27;/&#x27;)
+          e = prefix + &#x27;/&#x27; + e
+        else
+          e = prefix + e
+      }
+
+      if (e.charAt(0) === &#x27;/&#x27; &#x26;&#x26; !this.nomount) {
+        e = path.join(this.root, e)
+      }
+      this._emitMatch(index, e)
+    }
+    // This was the last one, and no stats were needed
+    return
+  }
+
+  // now test all matched entries as stand-ins for that part
+  // of the pattern.
+  remain.shift()
+  for (var i = 0; i &#x3c; len; i ++) {
+    var e = matchedEntries[i]
+    var newPattern
+    if (prefix)
+      newPattern = [prefix, e]
+    else
+      newPattern = [e]
+    this._process(newPattern.concat(remain), index, inGlobStar)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (childrenIgnored(this, read))
+  return cb()
+
+var isGlobStar = remain[0] === minimatch.GLOBSTAR
+if (isGlobStar)
+  this._processGlobStar(prefix, read, abs, remain, index, inGlobStar, cb)
+else
+  this.<span class="apidocCodeKeywordSpan">_processReaddir</span>(prefix, read, abs, remain, index, inGlobStar, cb)
+}
+
+Glob.prototype._processReaddir = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+var self = this
+this._readdir(abs, inGlobStar, function (er, entries) {
+  return self._processReaddir2(prefix, read, abs, remain, index, inGlobStar, entries, cb)
+})
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._processSimple" id="apidoc.element.glob.GlobSync.prototype._processSimple">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_processSimple
+        <span class="apidocSignatureSpan">(prefix, index)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_processSimple = function (prefix, index) {
+  // XXX review this.  Shouldn&#x27;t it be doing the mounting etc
+  // before doing stat?  kinda weird?
+  var exists = this._stat(prefix)
+
+  if (!this.matches[index])
+    this.matches[index] = Object.create(null)
+
+  // If it doesn&#x27;t exist, then just mark the lack of results
+  if (!exists)
+    return
+
+  if (prefix &#x26;&#x26; isAbsolute(prefix) &#x26;&#x26; !this.nomount) {
+    var trail = /[\/\\]$/.test(prefix)
+    if (prefix.charAt(0) === &#x27;/&#x27;) {
+      prefix = path.join(this.root, prefix)
+    } else {
+      prefix = path.resolve(this.root, prefix)
+      if (trail)
+        prefix += &#x27;/&#x27;
+    }
+  }
+
+  if (process.platform === &#x27;win32&#x27;)
+    prefix = prefix.replace(/\\/g, &#x27;/&#x27;)
+
+  // Mark this as a match
+  this._emitMatch(index, prefix)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // now n is the index of the first one that is *not* a string.
+
+  // see if there&#x27;s anything else
+  var prefix
+  switch (n) {
+// if not, then this is rather simple
+case pattern.length:
+  this.<span class="apidocCodeKeywordSpan">_processSimple</span>(pattern.join(&#x27;/&#x27;), index, cb)
+  return
+
+case 0:
+  // pattern *starts* with some non-trivial item.
+  // going to readdir(cwd), but not include the prefix in matches.
+  prefix = null
+  break
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._readdir" id="apidoc.element.glob.GlobSync.prototype._readdir">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_readdir
+        <span class="apidocSignatureSpan">(abs, inGlobStar)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_readdir = function (abs, inGlobStar) {
+  var entries
+
+  if (inGlobStar &#x26;&#x26; !ownProp(this.symlinks, abs))
+    return this._readdirInGlobStar(abs)
+
+  if (ownProp(this.cache, abs)) {
+    var c = this.cache[abs]
+    if (!c || c === &#x27;FILE&#x27;)
+      return null
+
+    if (Array.isArray(c))
+      return c
+  }
+
+  try {
+    return this._readdirEntries(abs, fs.readdirSync(abs))
+  } catch (er) {
+    this._readdirError(abs, er)
+    return null
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this._processGlobStar(prefix, read, abs, remain, index, inGlobStar, cb)
+else
+  this._processReaddir(prefix, read, abs, remain, index, inGlobStar, cb)
+}
+
+Glob.prototype._processReaddir = function (prefix, read, abs, remain, index, inGlobStar, cb) {
+var self = this
+this.<span class="apidocCodeKeywordSpan">_readdir</span>(abs, inGlobStar, function (er, entries) {
+  return self._processReaddir2(prefix, read, abs, remain, index, inGlobStar, entries, cb)
+})
+}
+
+Glob.prototype._processReaddir2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
+
+// if the abs isn&#x27;t a dir, then nothing can match!
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._readdirEntries" id="apidoc.element.glob.GlobSync.prototype._readdirEntries">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_readdirEntries
+        <span class="apidocSignatureSpan">(abs, entries)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_readdirEntries = function (abs, entries) {
+  // if we haven&#x27;t asked to stat everything, then just
+  // assume that everything in there exists, so we can avoid
+  // having to stat it a second time.
+  if (!this.mark &#x26;&#x26; !this.stat) {
+    for (var i = 0; i &#x3c; entries.length; i ++) {
+      var e = entries[i]
+      if (abs === &#x27;/&#x27;)
+        e = abs + e
+      else
+        e = abs + &#x27;/&#x27; + e
+      this.cache[e] = true
+    }
+  }
+
+  this.cache[abs] = entries
+
+  // mark and cache dir-ness
+  return entries
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+function readdirCb (self, abs, cb) {
+return function (er, entries) {
+  if (er)
+    self._readdirError(abs, er, cb)
+  else
+    self.<span class="apidocCodeKeywordSpan">_readdirEntries</span>(abs, entries, cb)
+}
+}
+
+Glob.prototype._readdirEntries = function (abs, entries, cb) {
+if (this.aborted)
+  return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._readdirError" id="apidoc.element.glob.GlobSync.prototype._readdirError">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_readdirError
+        <span class="apidocSignatureSpan">(f, er)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_readdirError = function (f, er) {
+  // handle errors, and cache the information
+  switch (er.code) {
+    case &#x27;ENOTSUP&#x27;: // https://github.com/isaacs/node-glob/issues/205
+    case &#x27;ENOTDIR&#x27;: // totally normal. means it *does* exist.
+      var abs = this._makeAbs(f)
+      this.cache[abs] = &#x27;FILE&#x27;
+      if (abs === this.cwdAbs) {
+        var error = new Error(er.code + &#x27; invalid cwd &#x27; + this.cwd)
+        error.path = this.cwd
+        error.code = er.code
+        throw error
+      }
+      break
+
+    case &#x27;ENOENT&#x27;: // not terribly unusual
+    case &#x27;ELOOP&#x27;:
+    case &#x27;ENAMETOOLONG&#x27;:
+    case &#x27;UNKNOWN&#x27;:
+      this.cache[this._makeAbs(f)] = false
+      break
+
+    default: // some unusual error.  Treat as failure.
+      this.cache[this._makeAbs(f)] = false
+      if (this.strict)
+        throw er
+      if (!this.silent)
+        console.error(&#x27;glob error&#x27;, er)
+      break
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var self = this
+fs.readdir(abs, readdirCb(this, abs, cb))
+}
+
+function readdirCb (self, abs, cb) {
+return function (er, entries) {
+  if (er)
+    self.<span class="apidocCodeKeywordSpan">_readdirError</span>(abs, er, cb)
+  else
+    self._readdirEntries(abs, entries, cb)
+}
+}
+
+Glob.prototype._readdirEntries = function (abs, entries, cb) {
+if (this.aborted)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._readdirInGlobStar" id="apidoc.element.glob.GlobSync.prototype._readdirInGlobStar">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_readdirInGlobStar
+        <span class="apidocSignatureSpan">(abs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_readdirInGlobStar = function (abs) {
+  // follow all symlinked directories forever
+  // just proceed as if this is a non-globstar situation
+  if (this.follow)
+    return this._readdir(abs, false)
+
+  var entries
+  var lstat
+  var stat
+  try {
+    lstat = fs.lstatSync(abs)
+  } catch (er) {
+    if (er.code === &#x27;ENOENT&#x27;) {
+      // lstat failed, doesn&#x27;t exist
+      return null
+    }
+  }
+
+  var isSym = lstat &#x26;&#x26; lstat.isSymbolicLink()
+  this.symlinks[abs] = isSym
+
+  // If it&#x27;s not a symlink or a dir, then it&#x27;s definitely a regular file.
+  // don&#x27;t bother doing a readdir in that case.
+  if (!isSym &#x26;&#x26; lstat &#x26;&#x26; !lstat.isDirectory())
+    this.cache[abs] = &#x27;FILE&#x27;
+  else
+    entries = this._readdir(abs, false)
+
+  return entries
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  cb = inflight(&#x27;readdir\0&#x27;+abs+&#x27;\0&#x27;+inGlobStar, cb)
+  if (!cb)
+return
+
+  //console.error(&#x27;RD %j %j&#x27;, +inGlobStar, abs)
+  if (inGlobStar &#x26;&#x26; !ownProp(this.symlinks, abs))
+return this.<span class="apidocCodeKeywordSpan">_readdirInGlobStar</span>(abs, cb)
+
+  if (ownProp(this.cache, abs)) {
+var c = this.cache[abs]
+if (!c || c === &#x27;FILE&#x27;)
+  return cb()
+
+if (Array.isArray(c))
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.GlobSync.prototype._stat" id="apidoc.element.glob.GlobSync.prototype._stat">
+        function <span class="apidocSignatureSpan">glob.GlobSync.prototype.</span>_stat
+        <span class="apidocSignatureSpan">(f)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_stat = function (f) {
+  var abs = this._makeAbs(f)
+  var needDir = f.slice(-1) === &#x27;/&#x27;
+
+  if (f.length &#x3e; this.maxLength)
+    return false
+
+  if (!this.stat &#x26;&#x26; ownProp(this.cache, abs)) {
+    var c = this.cache[abs]
+
+    if (Array.isArray(c))
+      c = &#x27;DIR&#x27;
+
+    // It exists, but maybe not how we need it
+    if (!needDir || c === &#x27;DIR&#x27;)
+      return c
+
+    if (needDir &#x26;&#x26; c === &#x27;FILE&#x27;)
+      return false
+
+    // otherwise we have to stat, because maybe c=true
+    // if we know it exists, but not what it is.
+  }
+
+  var exists
+  var stat = this.statCache[abs]
+  if (!stat) {
+    var lstat
+    try {
+      lstat = fs.lstatSync(abs)
+    } catch (er) {
+      if (er &#x26;&#x26; (er.code === &#x27;ENOENT&#x27; || er.code === &#x27;ENOTDIR&#x27;)) {
+        this.statCache[abs] = false
+        return false
+      }
+    }
+
+    if (lstat &#x26;&#x26; lstat.isSymbolicLink()) {
+      try {
+        stat = fs.statSync(abs)
+      } catch (er) {
+        stat = lstat
+      }
+    } else {
+      stat = lstat
+    }
+  }
+
+  this.statCache[abs] = stat
+
+  var c = true
+  if (stat)
+    c = stat.isDirectory() ? &#x27;DIR&#x27; : &#x27;FILE&#x27;
+
+  this.cache[abs] = this.cache[abs] || c
+
+  if (needDir &#x26;&#x26; c === &#x27;FILE&#x27;)
+    return false
+
+  return c
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+cb()
+}
+
+Glob.prototype._processSimple = function (prefix, index, cb) {
+// XXX review this.  Shouldn&#x27;t it be doing the mounting etc
+// before doing stat?  kinda weird?
+var self = this
+this.<span class="apidocCodeKeywordSpan">_stat</span>(prefix, function (er, exists) {
+  self._processSimple2(prefix, index, er, exists, cb)
+})
+}
+Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
+
+//console.error(&#x27;ps2&#x27;, prefix, exists)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.glob.sync" id="apidoc.module.glob.sync">module glob.sync</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.glob.sync.sync" id="apidoc.element.glob.sync.sync">
+        function <span class="apidocSignatureSpan">glob.</span>sync
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function globSync(pattern, options) {
+  if (typeof options === &#x27;function&#x27; || arguments.length === 3)
+    throw new TypeError(&#x27;callback provided to sync glob\n&#x27;+
+                        &#x27;See: https://github.com/isaacs/node-glob/issues/167&#x27;)
+
+  return new GlobSync(pattern, options).found
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* `options` `{Object}`
+* `cb` `{Function}`
+  * `err` `{Error | null}`
+  * `matches` `{Array&#x3c;String&#x3e;}` filenames found matching the pattern
+
+Perform an asynchronous glob search.
+
+## glob.<span class="apidocCodeKeywordSpan">sync</span>(pattern, [options])
+
+* `pattern` `{String}` Pattern to be matched
+* `options` `{Object}`
+* return: `{Array&#x3c;String&#x3e;}` filenames found matching the pattern
+
+Perform a synchronous glob search.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.sync.GlobSync" id="apidoc.element.glob.sync.GlobSync">
+        function <span class="apidocSignatureSpan">glob.sync.</span>GlobSync
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function GlobSync(pattern, options) {
+  if (!pattern)
+    throw new Error(&#x27;must provide pattern&#x27;)
+
+  if (typeof options === &#x27;function&#x27; || arguments.length === 3)
+    throw new TypeError(&#x27;callback provided to sync glob\n&#x27;+
+                        &#x27;See: https://github.com/isaacs/node-glob/issues/167&#x27;)
+
+  if (!(this instanceof GlobSync))
+    return new GlobSync(pattern, options)
+
+  setopts(this, pattern, options)
+
+  if (this.noprocess)
+    return this
+
+  var n = this.minimatch.set.length
+  this.matches = new Array(n)
+  for (var i = 0; i &#x3c; n; i ++) {
+    this._process(this.minimatch.set[i], i, false)
+  }
+  this._finish()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
