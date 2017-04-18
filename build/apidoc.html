@@ -108,15 +108,6 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.glob.toString">
-            function <span class="apidocSignatureSpan">glob.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-        <li>
-
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">glob.</span>Glob.prototype</span>
 
         </li>
@@ -578,6 +569,55 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.glob.glob">module glob.glob</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.glob.glob">
+            function <span class="apidocSignatureSpan">glob.</span>glob
+            <span class="apidocSignatureSpan">(pattern, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.glob.Glob">
+            function <span class="apidocSignatureSpan">glob.glob.</span>Glob
+            <span class="apidocSignatureSpan">(pattern, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.glob.GlobSync">
+            function <span class="apidocSignatureSpan">glob.glob.</span>GlobSync
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.glob.hasMagic">
+            function <span class="apidocSignatureSpan">glob.glob.</span>hasMagic
+            <span class="apidocSignatureSpan">(pattern, options_)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.glob.glob.sync">
+            function <span class="apidocSignatureSpan">glob.glob.</span>sync
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.glob.sync">module glob.sync</a><ol>
 
         <li>
@@ -839,21 +879,6 @@ Perform an asynchronous glob search.
 
 Perform a synchronous glob search.
 ...</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.glob.toString" id="apidoc.element.glob.toString">
-        function <span class="apidocSignatureSpan">glob.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return toString;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
@@ -3303,6 +3328,248 @@ Glob.prototype.abort = function () {
   self.options = self.minimatch.options
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.glob.glob" id="apidoc.module.glob.glob">module glob.glob</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.glob.glob.glob" id="apidoc.element.glob.glob.glob">
+        function <span class="apidocSignatureSpan">glob.</span>glob
+        <span class="apidocSignatureSpan">(pattern, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function glob(pattern, options, cb) {
+  if (typeof options === &#x27;function&#x27;) cb = options, options = {}
+  if (!options) options = {}
+
+  if (options.sync) {
+    if (cb)
+      throw new TypeError(&#x27;callback provided to sync glob&#x27;)
+    return globSync(pattern, options)
+  }
+
+  return new Glob(pattern, options, cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.glob.Glob" id="apidoc.element.glob.glob.Glob">
+        function <span class="apidocSignatureSpan">glob.glob.</span>Glob
+        <span class="apidocSignatureSpan">(pattern, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Glob(pattern, options, cb) {
+  if (typeof options === &#x27;function&#x27;) {
+    cb = options
+    options = null
+  }
+
+  if (options &#x26;&#x26; options.sync) {
+    if (cb)
+      throw new TypeError(&#x27;callback provided to sync glob&#x27;)
+    return new GlobSync(pattern, options)
+  }
+
+  if (!(this instanceof Glob))
+    return new Glob(pattern, options, cb)
+
+  setopts(this, pattern, options)
+  this._didRealPath = false
+
+  // process each pattern in the minimatch set
+  var n = this.minimatch.set.length
+
+  // The matches are stored as {&#x3c;filename&#x3e;: true,...} so that
+  // duplicates are automagically pruned.
+  // Later, we do an Object.keys() on these.
+  // Keep them as a list so we can fill in when nonull is set.
+  this.matches = new Array(n)
+
+  if (typeof cb === &#x27;function&#x27;) {
+    cb = once(cb)
+    this.on(&#x27;error&#x27;, cb)
+    this.on(&#x27;end&#x27;, function (matches) {
+      cb(null, matches)
+    })
+  }
+
+  var self = this
+  var n = this.minimatch.set.length
+  this._processing = 0
+  this.matches = new Array(n)
+
+  this._emitQueue = []
+  this._processQueue = []
+  this.paused = false
+
+  if (this.noprocess)
+    return this
+
+  if (n === 0)
+    return done()
+
+  var sync = true
+  for (var i = 0; i &#x3c; n; i ++) {
+    this._process(this.minimatch.set[i], i, false, done)
+  }
+  sync = false
+
+  function done () {
+    --self._processing
+    if (self._processing &#x3c;= 0) {
+      if (sync) {
+        process.nextTick(function () {
+          self._finish()
+        })
+      } else {
+        self._finish()
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var Glob = require(&#x22;glob&#x22;).Glob
+var mg = new Glob(pattern, options, cb)
+```
+
+It&#x27;s an EventEmitter, and starts walking the filesystem to find matches
+immediately.
+
+### new glob.<span class="apidocCodeKeywordSpan">Glob</span>(pattern, [options], [cb])
+
+* `pattern` `{String}` pattern to search for
+* `options` `{Object}`
+* `cb` `{Function}` Called when an error occurs, or matches are found
+* `err` `{Error | null}`
+* `matches` `{Array&#x3c;String&#x3e;}` filenames found matching the pattern
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.glob.GlobSync" id="apidoc.element.glob.glob.GlobSync">
+        function <span class="apidocSignatureSpan">glob.glob.</span>GlobSync
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function GlobSync(pattern, options) {
+  if (!pattern)
+    throw new Error(&#x27;must provide pattern&#x27;)
+
+  if (typeof options === &#x27;function&#x27; || arguments.length === 3)
+    throw new TypeError(&#x27;callback provided to sync glob\n&#x27;+
+                        &#x27;See: https://github.com/isaacs/node-glob/issues/167&#x27;)
+
+  if (!(this instanceof GlobSync))
+    return new GlobSync(pattern, options)
+
+  setopts(this, pattern, options)
+
+  if (this.noprocess)
+    return this
+
+  var n = this.minimatch.set.length
+  this.matches = new Array(n)
+  for (var i = 0; i &#x3c; n; i ++) {
+    this._process(this.minimatch.set[i], i, false)
+  }
+  this._finish()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.glob.hasMagic" id="apidoc.element.glob.glob.hasMagic">
+        function <span class="apidocSignatureSpan">glob.glob.</span>hasMagic
+        <span class="apidocSignatureSpan">(pattern, options_)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasMagic = function (pattern, options_) {
+  var options = extend({}, options_)
+  options.noprocess = true
+
+  var g = new Glob(pattern, options)
+  var set = g.minimatch.set
+
+  if (!pattern)
+    return false
+
+  if (set.length &#x3e; 1)
+    return true
+
+  for (var j = 0; j &#x3c; set[0].length; j++) {
+    if (typeof set[0][j] !== &#x27;string&#x27;)
+      return true
+  }
+
+  return false
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+* `man sh`
+* `man bash` (Search for &#x22;Pattern Matching&#x22;)
+* `man 3 fnmatch`
+* `man 5 gitignore`
+* [minimatch documentation](https://github.com/isaacs/minimatch)
+
+## glob.<span class="apidocCodeKeywordSpan">hasMagic</span>(pattern, [options])
+
+Returns `true` if there are any special characters in the pattern, and
+`false` otherwise.
+
+Note that the options affect the results.  If `noext:true` is set in
+the options object, then `+(a|b)` will not be considered a magic
+pattern.  If the pattern has a brace expansion, like `a/{b/c,x/y}`
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.glob.glob.sync" id="apidoc.element.glob.glob.sync">
+        function <span class="apidocSignatureSpan">glob.glob.</span>sync
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function globSync(pattern, options) {
+  if (typeof options === &#x27;function&#x27; || arguments.length === 3)
+    throw new TypeError(&#x27;callback provided to sync glob\n&#x27;+
+                        &#x27;See: https://github.com/isaacs/node-glob/issues/167&#x27;)
+
+  return new GlobSync(pattern, options).found
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* `options` `{Object}`
+* `cb` `{Function}`
+  * `err` `{Error | null}`
+  * `matches` `{Array&#x3c;String&#x3e;}` filenames found matching the pattern
+
+Perform an asynchronous glob search.
+
+## glob.<span class="apidocCodeKeywordSpan">sync</span>(pattern, [options])
+
+* `pattern` `{String}` Pattern to be matched
+* `options` `{Object}`
+* return: `{Array&#x3c;String&#x3e;}` filenames found matching the pattern
+
+Perform a synchronous glob search.
+...</pre></li>
     </ul>
 
 
