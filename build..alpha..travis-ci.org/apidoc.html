@@ -1156,20 +1156,21 @@ found.forEach(function (p, i) {
   return common.mark(this, p)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  this._emitQueue.push([index, e])
-  return
-}
 
-var abs = isAbsolute(e) ? e : this._makeAbs(e)
+if (!self.nosort)
+  all = all.sort(self.nocase ? alphasorti : alphasort)
 
-if (this.mark)
-  e = this.<span class="apidocCodeKeywordSpan">_mark</span>(e)
-
-if (this.absolute)
-  e = abs
-
-if (this.matches[index][e])
-  return
+// at *some* point we statted all of these
+if (self.mark) {
+  for (var i = 0; i &#x3c; all.length; i++) {
+    all[i] = self.<span class="apidocCodeKeywordSpan">_mark</span>(all[i])
+  }
+  if (self.nodir) {
+    all = all.filter(function (e) {
+      var notDir = !(/\/$/.test(e))
+      var c = self.cache[e] || self.cache[makeAbs(self, e)]
+      if (notDir &#x26;&#x26; c)
+        notDir = c !== &#x27;DIR&#x27; &#x26;&#x26; !Array.isArray(c)
 ...</pre></li>
     </ul>
 
@@ -2354,20 +2355,21 @@ found.forEach(function (p, i) {
   return common.mark(this, p)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  this._emitQueue.push([index, e])
-  return
-}
 
-var abs = isAbsolute(e) ? e : this._makeAbs(e)
+if (!self.nosort)
+  all = all.sort(self.nocase ? alphasorti : alphasort)
 
-if (this.mark)
-  e = this.<span class="apidocCodeKeywordSpan">_mark</span>(e)
-
-if (this.absolute)
-  e = abs
-
-if (this.matches[index][e])
-  return
+// at *some* point we statted all of these
+if (self.mark) {
+  for (var i = 0; i &#x3c; all.length; i++) {
+    all[i] = self.<span class="apidocCodeKeywordSpan">_mark</span>(all[i])
+  }
+  if (self.nodir) {
+    all = all.filter(function (e) {
+      var notDir = !(/\/$/.test(e))
+      var c = self.cache[e] || self.cache[makeAbs(self, e)]
+      if (notDir &#x26;&#x26; c)
+        notDir = c !== &#x27;DIR&#x27; &#x26;&#x26; !Array.isArray(c)
 ...</pre></li>
     </ul>
 
