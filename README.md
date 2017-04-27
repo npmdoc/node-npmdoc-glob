@@ -1,6 +1,6 @@
 # npmdoc-glob
 
-#### api documentation for  [glob (v7.1.1)](https://github.com/isaacs/node-glob#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-glob.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-glob) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-glob.svg)](https://travis-ci.org/npmdoc/node-npmdoc-glob)
+#### basic api documentation for  [glob (v7.1.1)](https://github.com/isaacs/node-glob#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-glob.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-glob) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-glob.svg)](https://travis-ci.org/npmdoc/node-npmdoc-glob)
 
 #### a little globber
 
@@ -80,7 +80,8 @@
         "test": "tap test/*.js --cov",
         "test-regen": "npm run profclean && TEST_REGEN=1 node test/00-setup.js"
     },
-    "version": "7.1.1"
+    "version": "7.1.1",
+    "bin": {}
 }
 ```
 
