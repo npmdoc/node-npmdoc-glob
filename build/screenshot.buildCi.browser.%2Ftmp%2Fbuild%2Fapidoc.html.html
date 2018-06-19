@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -48,17 +48,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/isaacs/node-glob#readme"
-
-    >glob (7.1.2)</a>
+    <a href="https://github.com/isaacs/node-glob#readme">glob (7.1.2)</a>
 </h1>
 <h4>a little globber</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.glob">module glob</a><ol>
 
@@ -606,12 +599,12 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function glob(pattern, options, cb) {
-  if (typeof options === &apos;function&apos;) cb = options, options = {}
+  if (typeof options === 'function') cb = options, options = {}
   if (!options) options = {}
 
   if (options.sync) {
     if (cb)
-      throw new TypeError(&apos;callback provided to sync glob&apos;)
+      throw new TypeError('callback provided to sync glob')
     return globSync(pattern, options)
   }
 
@@ -630,14 +623,14 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Glob(pattern, options, cb) {
-  if (typeof options === &apos;function&apos;) {
+  if (typeof options === 'function') {
     cb = options
     options = null
   }
 
   if (options &amp;&amp; options.sync) {
     if (cb)
-      throw new TypeError(&apos;callback provided to sync glob&apos;)
+      throw new TypeError('callback provided to sync glob')
     return new GlobSync(pattern, options)
   }
 
@@ -656,10 +649,10 @@
   // Keep them as a list so we can fill in when nonull is set.
   this.matches = new Array(n)
 
-  if (typeof cb === &apos;function&apos;) {
+  if (typeof cb === 'function') {
     cb = once(cb)
-    this.on(&apos;error&apos;, cb)
-    this.on(&apos;end&apos;, function (matches) {
+    this.on('error', cb)
+    this.on('end', function (matches) {
       cb(null, matches)
     })
   }
@@ -697,11 +690,11 @@
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Glob = require(&quot;glob&quot;).Glob
+var Glob = require("glob").Glob
 var mg = new Glob(pattern, options, cb)
 ```
 
-It&apos;s an EventEmitter, and starts walking the filesystem to find matches
+It's an EventEmitter, and starts walking the filesystem to find matches
 immediately.
 
 ### new glob.<span class="apidocCodeKeywordSpan">Glob</span>(pattern, [options], [cb])
@@ -725,11 +718,11 @@ immediately.
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function GlobSync(pattern, options) {
   if (!pattern)
-    throw new Error(&apos;must provide pattern&apos;)
+    throw new Error('must provide pattern')
 
-  if (typeof options === &apos;function&apos; || arguments.length === 3)
-    throw new TypeError(&apos;callback provided to sync glob\n&apos;+
-                        &apos;See: https://github.com/isaacs/node-glob/issues/167&apos;)
+  if (typeof options === 'function' || arguments.length === 3)
+    throw new TypeError('callback provided to sync glob\n'+
+                        'See: https://github.com/isaacs/node-glob/issues/167')
 
   if (!(this instanceof GlobSync))
     return new GlobSync(pattern, options)
@@ -772,7 +765,7 @@ immediately.
     return true
 
   for (var j = 0; j &lt; set[0].length; j++) {
-    if (typeof set[0][j] !== &apos;string&apos;)
+    if (typeof set[0][j] !== 'string')
       return true
   }
 
@@ -781,7 +774,7 @@ immediately.
     <li>example usage<pre class="apidocCodePre">...
 
 * `man sh`
-* `man bash` (Search for &quot;Pattern Matching&quot;)
+* `man bash` (Search for "Pattern Matching")
 * `man 3 fnmatch`
 * `man 5 gitignore`
 * [minimatch documentation](https://github.com/isaacs/minimatch)
@@ -807,9 +800,9 @@ pattern.  If the pattern has a brace expansion, like `a/{b/c,x/y}`
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function globSync(pattern, options) {
-  if (typeof options === &apos;function&apos; || arguments.length === 3)
-    throw new TypeError(&apos;callback provided to sync glob\n&apos;+
-                        &apos;See: https://github.com/isaacs/node-glob/issues/167&apos;)
+  if (typeof options === 'function' || arguments.length === 3)
+    throw new TypeError('callback provided to sync glob\n'+
+                        'See: https://github.com/isaacs/node-glob/issues/167')
 
   return new GlobSync(pattern, options).found
 }</pre></li>
@@ -852,14 +845,14 @@ Perform a synchronous glob search.
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Glob(pattern, options, cb) {
-  if (typeof options === &apos;function&apos;) {
+  if (typeof options === 'function') {
     cb = options
     options = null
   }
 
   if (options &amp;&amp; options.sync) {
     if (cb)
-      throw new TypeError(&apos;callback provided to sync glob&apos;)
+      throw new TypeError('callback provided to sync glob')
     return new GlobSync(pattern, options)
   }
 
@@ -878,10 +871,10 @@ Perform a synchronous glob search.
   // Keep them as a list so we can fill in when nonull is set.
   this.matches = new Array(n)
 
-  if (typeof cb === &apos;function&apos;) {
+  if (typeof cb === 'function') {
     cb = once(cb)
-    this.on(&apos;error&apos;, cb)
-    this.on(&apos;end&apos;, function (matches) {
+    this.on('error', cb)
+    this.on('end', function (matches) {
       cb(null, matches)
     })
   }
@@ -919,11 +912,11 @@ Perform a synchronous glob search.
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var Glob = require(&quot;glob&quot;).Glob
+var Glob = require("glob").Glob
 var mg = new Glob(pattern, options, cb)
 ```
 
-It&apos;s an EventEmitter, and starts walking the filesystem to find matches
+It's an EventEmitter, and starts walking the filesystem to find matches
 immediately.
 
 ### new glob.<span class="apidocCodeKeywordSpan">Glob</span>(pattern, [options], [cb])
@@ -990,7 +983,7 @@ immediately.
 
   if (this.nodir) {
     var c = this.cache[abs]
-    if (c === &apos;DIR&apos; || Array.isArray(c))
+    if (c === 'DIR' || Array.isArray(c))
       return
   }
 
@@ -998,12 +991,12 @@ immediately.
 
   var st = this.statCache[abs]
   if (st)
-    this.emit(&apos;stat&apos;, e, st)
+    this.emit('stat', e, st)
 
-  this.emit(&apos;match&apos;, e)
+  this.emit('match', e)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-this.emit(&apos;resume&apos;)
+this.emit('resume')
 this.paused = false
 if (this._emitQueue.length) {
   var eq = this._emitQueue.slice(0)
@@ -1039,7 +1032,7 @@ if (this._processQueue.length) {
     return this._realpath()
 
   common.finish(this)
-  this.emit(&apos;end&apos;, this.found)
+  this.emit('end', this.found)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   sync = false
@@ -1077,17 +1070,17 @@ if (this._processQueue.length) {
 
 var set = this.matches[index] = Object.create(null)
 found.forEach(function (p, i) {
-  // If there&apos;s a problem with the stat, then it means that
-  // one or more of the links in the realpath couldn&apos;t be
+  // If there's a problem with the stat, then it means that
+  // one or more of the links in the realpath couldn't be
   // resolved.  just return the abs value in that case.
   p = self.<span class="apidocCodeKeywordSpan">_makeAbs</span>(p)
   rp.realpath(p, self.realpathCache, function (er, real) {
     if (!er)
       set[real] = true
-    else if (er.syscall === &apos;stat&apos;)
+    else if (er.syscall === 'stat')
       set[p] = true
     else
-      self.emit(&apos;error&apos;, er) // srsly wtf right here
+      self.emit('error', er) // srsly wtf right here
 ...</pre></li>
     </ul>
 
@@ -1118,7 +1111,7 @@ if (self.mark) {
       var notDir = !(/\/$/.test(e))
       var c = self.cache[e] || self.cache[makeAbs(self, e)]
       if (notDir &amp;&amp; c)
-        notDir = c !== &apos;DIR&apos; &amp;&amp; !Array.isArray(c)
+        notDir = c !== 'DIR' &amp;&amp; !Array.isArray(c)
 ...</pre></li>
     </ul>
 
@@ -1133,7 +1126,7 @@ if (self.mark) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_process = function (pattern, index, inGlobStar, cb) {
   assert(this instanceof Glob)
-  assert(typeof cb === &apos;function&apos;)
+  assert(typeof cb === 'function')
 
   if (this.aborted)
     return
@@ -1144,21 +1137,21 @@ if (self.mark) {
     return
   }
 
-  //console.error(&apos;PROCESS %d&apos;, this._processing, pattern)
+  //console.error('PROCESS %d', this._processing, pattern)
 
   // Get the first [n] parts of pattern that are all strings.
   var n = 0
-  while (typeof pattern[n] === &apos;string&apos;) {
+  while (typeof pattern[n] === 'string') {
     n ++
   }
   // now n is the index of the first one that is *not* a string.
 
-  // see if there&apos;s anything else
+  // see if there's anything else
   var prefix
   switch (n) {
     // if not, then this is rather simple
     case pattern.length:
-      this._processSimple(pattern.join(&apos;/&apos;), index, cb)
+      this._processSimple(pattern.join('/'), index, cb)
       return
 
     case 0:
@@ -1169,9 +1162,9 @@ if (self.mark) {
 
     default:
       // pattern has some string bits in the front.
-      // whatever it starts with, whether that&apos;s &apos;absolute&apos; like /foo/bar,
-      // or &apos;relative&apos; like &apos;../baz&apos;
-      prefix = pattern.slice(0, n).join(&apos;/&apos;)
+      // whatever it starts with, whether that's 'absolute' like /foo/bar,
+      // or 'relative' like '../baz'
+      prefix = pattern.slice(0, n).join('/')
       break
   }
 
@@ -1180,10 +1173,10 @@ if (self.mark) {
   // get the list of entries.
   var read
   if (prefix === null)
-    read = &apos;.&apos;
-  else if (isAbsolute(prefix) || isAbsolute(pattern.join(&apos;/&apos;))) {
+    read = '.'
+  else if (isAbsolute(prefix) || isAbsolute(pattern.join('/'))) {
     if (!prefix || !isAbsolute(prefix))
-      prefix = &apos;/&apos; + prefix
+      prefix = '/' + prefix
     read = prefix
   } else
     read = prefix
@@ -1263,10 +1256,10 @@ this._readdir(abs, inGlobStar, function (er, entries) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_processGlobStar2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
-  //console.error(&apos;pgs2&apos;, prefix, remain[0], entries)
+  //console.error('pgs2', prefix, remain[0], entries)
 
   // no entries means not a dir, so it can never have matches
-  // foo.txt/** doesn&apos;t match foo.txt
+  // foo.txt/** doesn't match foo.txt
   if (!entries)
     return cb()
 
@@ -1282,13 +1275,13 @@ this._readdir(abs, inGlobStar, function (er, entries) {
   var isSym = this.symlinks[abs]
   var len = entries.length
 
-  // If it&apos;s a symlink, and we&apos;re in a globstar, then stop
+  // If it's a symlink, and we're in a globstar, then stop
   if (isSym &amp;&amp; inGlobStar)
     return cb()
 
   for (var i = 0; i &lt; len; i++) {
     var e = entries[i]
-    if (e.charAt(0) === &apos;.&apos; &amp;&amp; !this.dot)
+    if (e.charAt(0) === '.' &amp;&amp; !this.dot)
       continue
 
     // these two cases enter the inGlobStar state
@@ -1315,7 +1308,7 @@ this._readdir(abs, inGlobStar, function (er, entries) {
 
 
 Glob.prototype._processGlobStar2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
-//console.error(&apos;pgs2&apos;, prefix, remain[0], entries)
+//console.error('pgs2', prefix, remain[0], entries)
 ...</pre></li>
     </ul>
 
@@ -1364,21 +1357,21 @@ this._readdir(abs, inGlobStar, function (er, entries) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_processReaddir2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
 
-  // if the abs isn&apos;t a dir, then nothing can match!
+  // if the abs isn't a dir, then nothing can match!
   if (!entries)
     return cb()
 
   // It will only match dot entries if it starts with a dot, or if
-  // dot is set.  Stuff like @(.foo|.bar) isn&apos;t allowed.
+  // dot is set.  Stuff like @(.foo|.bar) isn't allowed.
   var pn = remain[0]
   var negate = !!this.minimatch.negate
   var rawGlob = pn._glob
-  var dotOk = this.dot || rawGlob.charAt(0) === &apos;.&apos;
+  var dotOk = this.dot || rawGlob.charAt(0) === '.'
 
   var matchedEntries = []
   for (var i = 0; i &lt; entries.length; i++) {
     var e = entries[i]
-    if (e.charAt(0) !== &apos;.&apos; || dotOk) {
+    if (e.charAt(0) !== '.' || dotOk) {
       var m
       if (negate &amp;&amp; !prefix) {
         m = !e.match(pn)
@@ -1390,7 +1383,7 @@ this._readdir(abs, inGlobStar, function (er, entries) {
     }
   }
 
-  //console.error(&apos;prd2&apos;, prefix, entries, remain[0]._glob, matchedEntries)
+  //console.error('prd2', prefix, entries, remain[0]._glob, matchedEntries)
 
   var len = matchedEntries.length
   // If there are no matched entries, then nothing matches.
@@ -1409,13 +1402,13 @@ this._readdir(abs, inGlobStar, function (er, entries) {
     for (var i = 0; i &lt; len; i ++) {
       var e = matchedEntries[i]
       if (prefix) {
-        if (prefix !== &apos;/&apos;)
-          e = prefix + &apos;/&apos; + e
+        if (prefix !== '/')
+          e = prefix + '/' + e
         else
           e = prefix + e
       }
 
-      if (e.charAt(0) === &apos;/&apos; &amp;&amp; !this.nomount) {
+      if (e.charAt(0) === '/' &amp;&amp; !this.nomount) {
         e = path.join(this.root, e)
       }
       this._emitMatch(index, e)
@@ -1431,8 +1424,8 @@ this._readdir(abs, inGlobStar, function (er, entries) {
     var e = matchedEntries[i]
     var newPattern
     if (prefix) {
-      if (prefix !== &apos;/&apos;)
-        e = prefix + &apos;/&apos; + e
+      if (prefix !== '/')
+        e = prefix + '/' + e
       else
         e = prefix + e
     }
@@ -1455,7 +1448,7 @@ cb)
 
 Glob.prototype._processReaddir2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
 
-// if the abs isn&apos;t a dir, then nothing can match!
+// if the abs isn't a dir, then nothing can match!
 if (!entries)
 ...</pre></li>
     </ul>
@@ -1470,7 +1463,7 @@ if (!entries)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_processSimple = function (prefix, index, cb) {
-  // XXX review this.  Shouldn&apos;t it be doing the mounting etc
+  // XXX review this.  Shouldn't it be doing the mounting etc
   // before doing stat?  kinda weird?
   var self = this
   this._stat(prefix, function (er, exists) {
@@ -1480,12 +1473,12 @@ if (!entries)
     <li>example usage<pre class="apidocCodePre">...
   // now n is the index of the first one that is *not* a string.
 
-  // see if there&apos;s anything else
+  // see if there's anything else
   var prefix
   switch (n) {
 // if not, then this is rather simple
 case pattern.length:
-  this.<span class="apidocCodeKeywordSpan">_processSimple</span>(pattern.join(&apos;/&apos;), index, cb)
+  this.<span class="apidocCodeKeywordSpan">_processSimple</span>(pattern.join('/'), index, cb)
   return
 
 case 0:
@@ -1507,28 +1500,28 @@ case 0:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_processSimple2 = function (prefix, index, er, exists, cb) {
 
-  //console.error(&apos;ps2&apos;, prefix, exists)
+  //console.error('ps2', prefix, exists)
 
   if (!this.matches[index])
     this.matches[index] = Object.create(null)
 
-  // If it doesn&apos;t exist, then just mark the lack of results
+  // If it doesn't exist, then just mark the lack of results
   if (!exists)
     return cb()
 
   if (prefix &amp;&amp; isAbsolute(prefix) &amp;&amp; !this.nomount) {
     var trail = /[\/\\]$/.test(prefix)
-    if (prefix.charAt(0) === &apos;/&apos;) {
+    if (prefix.charAt(0) === '/') {
       prefix = path.join(this.root, prefix)
     } else {
       prefix = path.resolve(this.root, prefix)
       if (trail)
-        prefix += &apos;/&apos;
+        prefix += '/'
     }
   }
 
-  if (process.platform === &apos;win32&apos;)
-    prefix = prefix.replace(/\\/g, &apos;/&apos;)
+  if (process.platform === 'win32')
+    prefix = prefix.replace(/\\/g, '/')
 
   // Mark this as a match
   this._emitMatch(index, prefix)
@@ -1538,7 +1531,7 @@ case 0:
 }
 
 Glob.prototype._processSimple = function (prefix, index, cb) {
-// XXX review this.  Shouldn&apos;t it be doing the mounting etc
+// XXX review this.  Shouldn't it be doing the mounting etc
 // before doing stat?  kinda weird?
 var self = this
 this._stat(prefix, function (er, exists) {
@@ -1547,7 +1540,7 @@ this._stat(prefix, function (er, exists) {
 }
 Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
 
-//console.error(&apos;ps2&apos;, prefix, exists)
+//console.error('ps2', prefix, exists)
 
 if (!this.matches[index])
 ...</pre></li>
@@ -1566,17 +1559,17 @@ if (!this.matches[index])
   if (this.aborted)
     return
 
-  cb = inflight(&apos;readdir\0&apos;+abs+&apos;\0&apos;+inGlobStar, cb)
+  cb = inflight('readdir\0'+abs+'\0'+inGlobStar, cb)
   if (!cb)
     return
 
-  //console.error(&apos;RD %j %j&apos;, +inGlobStar, abs)
+  //console.error('RD %j %j', +inGlobStar, abs)
   if (inGlobStar &amp;&amp; !ownProp(this.symlinks, abs))
     return this._readdirInGlobStar(abs, cb)
 
   if (ownProp(this.cache, abs)) {
     var c = this.cache[abs]
-    if (!c || c === &apos;FILE&apos;)
+    if (!c || c === 'FILE')
       return cb()
 
     if (Array.isArray(c))
@@ -1601,7 +1594,7 @@ this.<span class="apidocCodeKeywordSpan">_readdir</span>(abs, inGlobStar, functi
 
 Glob.prototype._processReaddir2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
 
-// if the abs isn&apos;t a dir, then nothing can match!
+// if the abs isn't a dir, then nothing can match!
 ...</pre></li>
     </ul>
 
@@ -1618,16 +1611,16 @@ Glob.prototype._processReaddir2 = function (prefix, read, abs, remain, index, in
   if (this.aborted)
     return
 
-  // if we haven&apos;t asked to stat everything, then just
+  // if we haven't asked to stat everything, then just
   // assume that everything in there exists, so we can avoid
   // having to stat it a second time.
   if (!this.mark &amp;&amp; !this.stat) {
     for (var i = 0; i &lt; entries.length; i ++) {
       var e = entries[i]
-      if (abs === &apos;/&apos;)
+      if (abs === '/')
         e = abs + e
       else
-        e = abs + &apos;/&apos; + e
+        e = abs + '/' + e
       this.cache[e] = true
     }
   }
@@ -1668,36 +1661,36 @@ if (this.aborted)
 
   // handle errors, and cache the information
   switch (er.code) {
-    case &apos;ENOTSUP&apos;: // https://github.com/isaacs/node-glob/issues/205
-    case &apos;ENOTDIR&apos;: // totally normal. means it *does* exist.
+    case 'ENOTSUP': // https://github.com/isaacs/node-glob/issues/205
+    case 'ENOTDIR': // totally normal. means it *does* exist.
       var abs = this._makeAbs(f)
-      this.cache[abs] = &apos;FILE&apos;
+      this.cache[abs] = 'FILE'
       if (abs === this.cwdAbs) {
-        var error = new Error(er.code + &apos; invalid cwd &apos; + this.cwd)
+        var error = new Error(er.code + ' invalid cwd ' + this.cwd)
         error.path = this.cwd
         error.code = er.code
-        this.emit(&apos;error&apos;, error)
+        this.emit('error', error)
         this.abort()
       }
       break
 
-    case &apos;ENOENT&apos;: // not terribly unusual
-    case &apos;ELOOP&apos;:
-    case &apos;ENAMETOOLONG&apos;:
-    case &apos;UNKNOWN&apos;:
+    case 'ENOENT': // not terribly unusual
+    case 'ELOOP':
+    case 'ENAMETOOLONG':
+    case 'UNKNOWN':
       this.cache[this._makeAbs(f)] = false
       break
 
     default: // some unusual error.  Treat as failure.
       this.cache[this._makeAbs(f)] = false
       if (this.strict) {
-        this.emit(&apos;error&apos;, er)
+        this.emit('error', er)
         // If the error is handled, then we abort
         // if not, we threw out of here
         this.abort()
       }
       if (!this.silent)
-        console.error(&apos;glob error&apos;, er)
+        console.error('glob error', er)
       break
   }
 
@@ -1740,7 +1733,7 @@ if (this.aborted)
   if (this.follow)
     return this._readdir(abs, false, cb)
 
-  var lstatkey = &apos;lstat\0&apos; + abs
+  var lstatkey = 'lstat\0' + abs
   var self = this
   var lstatcb = inflight(lstatkey, lstatcb_)
 
@@ -1748,16 +1741,16 @@ if (this.aborted)
     fs.lstat(abs, lstatcb)
 
   function lstatcb_ (er, lstat) {
-    if (er &amp;&amp; er.code === &apos;ENOENT&apos;)
+    if (er &amp;&amp; er.code === 'ENOENT')
       return cb()
 
     var isSym = lstat &amp;&amp; lstat.isSymbolicLink()
     self.symlinks[abs] = isSym
 
-    // If it&apos;s not a symlink or a dir, then it&apos;s definitely a regular file.
-    // don&apos;t bother doing a readdir in that case.
+    // If it's not a symlink or a dir, then it's definitely a regular file.
+    // don't bother doing a readdir in that case.
     if (!isSym &amp;&amp; lstat &amp;&amp; !lstat.isDirectory()) {
-      self.cache[abs] = &apos;FILE&apos;
+      self.cache[abs] = 'FILE'
       cb()
     } else
       self._readdir(abs, false, cb)
@@ -1765,17 +1758,17 @@ if (this.aborted)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-  cb = inflight(&apos;readdir\0&apos;+abs+&apos;\0&apos;+inGlobStar, cb)
+  cb = inflight('readdir\0'+abs+'\0'+inGlobStar, cb)
   if (!cb)
 return
 
-  //console.error(&apos;RD %j %j&apos;, +inGlobStar, abs)
+  //console.error('RD %j %j', +inGlobStar, abs)
   if (inGlobStar &amp;&amp; !ownProp(this.symlinks, abs))
 return this.<span class="apidocCodeKeywordSpan">_readdirInGlobStar</span>(abs, cb)
 
   if (ownProp(this.cache, abs)) {
 var c = this.cache[abs]
-if (!c || c === &apos;FILE&apos;)
+if (!c || c === 'FILE')
   return cb()
 
 if (Array.isArray(c))
@@ -1821,7 +1814,7 @@ if (this.realpath &amp;&amp; !this._didRealpath)
   return this.<span class="apidocCodeKeywordSpan">_realpath</span>()
 
 common.finish(this)
-this.emit(&apos;end&apos;, this.found)
+this.emit('end', this.found)
 }
 
 Glob.prototype._realpath = function () {
@@ -1852,17 +1845,17 @@ if (this._didRealpath)
 
   var set = this.matches[index] = Object.create(null)
   found.forEach(function (p, i) {
-    // If there&apos;s a problem with the stat, then it means that
-    // one or more of the links in the realpath couldn&apos;t be
+    // If there's a problem with the stat, then it means that
+    // one or more of the links in the realpath couldn't be
     // resolved.  just return the abs value in that case.
     p = self._makeAbs(p)
     rp.realpath(p, self.realpathCache, function (er, real) {
       if (!er)
         set[real] = true
-      else if (er.syscall === &apos;stat&apos;)
+      else if (er.syscall === 'stat')
         set[p] = true
       else
-        self.emit(&apos;error&apos;, er) // srsly wtf right here
+        self.emit('error', er) // srsly wtf right here
 
       if (--n === 0) {
         self.matches[index] = set
@@ -1900,7 +1893,7 @@ if (this._didRealpath)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_stat = function (f, cb) {
   var abs = this._makeAbs(f)
-  var needDir = f.slice(-1) === &apos;/&apos;
+  var needDir = f.slice(-1) === '/'
 
   if (f.length &gt; this.maxLength)
     return cb()
@@ -1909,13 +1902,13 @@ if (this._didRealpath)
     var c = this.cache[abs]
 
     if (Array.isArray(c))
-      c = &apos;DIR&apos;
+      c = 'DIR'
 
     // It exists, but maybe not how we need it
-    if (!needDir || c === &apos;DIR&apos;)
+    if (!needDir || c === 'DIR')
       return cb(null, c)
 
-    if (needDir &amp;&amp; c === &apos;FILE&apos;)
+    if (needDir &amp;&amp; c === 'FILE')
       return cb()
 
     // otherwise we have to stat, because maybe c=true
@@ -1928,8 +1921,8 @@ if (this._didRealpath)
     if (stat === false)
       return cb(null, stat)
     else {
-      var type = stat.isDirectory() ? &apos;DIR&apos; : &apos;FILE&apos;
-      if (needDir &amp;&amp; type === &apos;FILE&apos;)
+      var type = stat.isDirectory() ? 'DIR' : 'FILE'
+      if (needDir &amp;&amp; type === 'FILE')
         return cb()
       else
         return cb(null, type, stat)
@@ -1937,13 +1930,13 @@ if (this._didRealpath)
   }
 
   var self = this
-  var statcb = inflight(&apos;stat\0&apos; + abs, lstatcb_)
+  var statcb = inflight('stat\0' + abs, lstatcb_)
   if (statcb)
     fs.lstat(abs, statcb)
 
   function lstatcb_ (er, lstat) {
     if (lstat &amp;&amp; lstat.isSymbolicLink()) {
-      // If it&apos;s a symlink, then treat it as the target, unless
+      // If it's a symlink, then treat it as the target, unless
       // the target does not exist, then treat it as a file.
       return fs.stat(abs, function (er, stat) {
         if (er)
@@ -1961,7 +1954,7 @@ cb()
 }
 
 Glob.prototype._processSimple = function (prefix, index, cb) {
-// XXX review this.  Shouldn&apos;t it be doing the mounting etc
+// XXX review this.  Shouldn't it be doing the mounting etc
 // before doing stat?  kinda weird?
 var self = this
 this.<span class="apidocCodeKeywordSpan">_stat</span>(prefix, function (er, exists) {
@@ -1970,7 +1963,7 @@ this.<span class="apidocCodeKeywordSpan">_stat</span>(prefix, function (er, exis
 }
 Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
 
-//console.error(&apos;ps2&apos;, prefix, exists)
+//console.error('ps2', prefix, exists)
 ...</pre></li>
     </ul>
 
@@ -1984,23 +1977,23 @@ Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_stat2 = function (f, abs, er, stat, cb) {
-  if (er &amp;&amp; (er.code === &apos;ENOENT&apos; || er.code === &apos;ENOTDIR&apos;)) {
+  if (er &amp;&amp; (er.code === 'ENOENT' || er.code === 'ENOTDIR')) {
     this.statCache[abs] = false
     return cb()
   }
 
-  var needDir = f.slice(-1) === &apos;/&apos;
+  var needDir = f.slice(-1) === '/'
   this.statCache[abs] = stat
 
-  if (abs.slice(-1) === &apos;/&apos; &amp;&amp; stat &amp;&amp; !stat.isDirectory())
+  if (abs.slice(-1) === '/' &amp;&amp; stat &amp;&amp; !stat.isDirectory())
     return cb(null, false, stat)
 
   var c = true
   if (stat)
-    c = stat.isDirectory() ? &apos;DIR&apos; : &apos;FILE&apos;
+    c = stat.isDirectory() ? 'DIR' : 'FILE'
   this.cache[abs] = this.cache[abs] || c
 
-  if (needDir &amp;&amp; c === &apos;FILE&apos;)
+  if (needDir &amp;&amp; c === 'FILE')
     return cb()
 
   return cb(null, c, stat)
@@ -2009,7 +2002,7 @@ Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
 
 function lstatcb_ (er, lstat) {
   if (lstat &amp;&amp; lstat.isSymbolicLink()) {
-    // If it&apos;s a symlink, then treat it as the target, unless
+    // If it's a symlink, then treat it as the target, unless
     // the target does not exist, then treat it as a file.
     return fs.stat(abs, function (er, stat) {
       if (er)
@@ -2035,24 +2028,24 @@ function lstatcb_ (er, lstat) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">abort = function () {
   this.aborted = true
-  this.emit(&apos;abort&apos;)
+  this.emit('abort')
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   var abs = this._makeAbs(f)
-  this.cache[abs] = &apos;FILE&apos;
+  this.cache[abs] = 'FILE'
   if (abs === this.cwdAbs) {
-    var error = new Error(er.code + &apos; invalid cwd &apos; + this.cwd)
+    var error = new Error(er.code + ' invalid cwd ' + this.cwd)
     error.path = this.cwd
     error.code = er.code
-    this.emit(&apos;error&apos;, error)
+    this.emit('error', error)
     this.<span class="apidocCodeKeywordSpan">abort</span>()
   }
   break
 
-case &apos;ENOENT&apos;: // not terribly unusual
-case &apos;ELOOP&apos;:
-case &apos;ENAMETOOLONG&apos;:
-case &apos;UNKNOWN&apos;:
+case 'ENOENT': // not terribly unusual
+case 'ELOOP':
+case 'ENAMETOOLONG':
+case 'UNKNOWN':
 ...</pre></li>
     </ul>
 
@@ -2068,7 +2061,7 @@ case &apos;UNKNOWN&apos;:
     <li>description and source-code<pre class="apidocCodePre">pause = function () {
   if (!this.paused) {
     this.paused = true
-    this.emit(&apos;pause&apos;)
+    this.emit('pause')
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2085,7 +2078,7 @@ case &apos;UNKNOWN&apos;:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">resume = function () {
   if (this.paused) {
-    this.emit(&apos;resume&apos;)
+    this.emit('resume')
     this.paused = false
     if (this._emitQueue.length) {
       var eq = this._emitQueue.slice(0)
@@ -2125,11 +2118,11 @@ case &apos;UNKNOWN&apos;:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function GlobSync(pattern, options) {
   if (!pattern)
-    throw new Error(&apos;must provide pattern&apos;)
+    throw new Error('must provide pattern')
 
-  if (typeof options === &apos;function&apos; || arguments.length === 3)
-    throw new TypeError(&apos;callback provided to sync glob\n&apos;+
-                        &apos;See: https://github.com/isaacs/node-glob/issues/167&apos;)
+  if (typeof options === 'function' || arguments.length === 3)
+    throw new TypeError('callback provided to sync glob\n'+
+                        'See: https://github.com/isaacs/node-glob/issues/167')
 
   if (!(this instanceof GlobSync))
     return new GlobSync(pattern, options)
@@ -2181,7 +2174,7 @@ case &apos;UNKNOWN&apos;:
 
   if (this.nodir) {
     var c = this.cache[abs]
-    if (c === &apos;DIR&apos; || Array.isArray(c))
+    if (c === 'DIR' || Array.isArray(c))
       return
   }
 
@@ -2191,7 +2184,7 @@ case &apos;UNKNOWN&apos;:
     this._stat(e)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-this.emit(&apos;resume&apos;)
+this.emit('resume')
 this.paused = false
 if (this._emitQueue.length) {
   var eq = this._emitQueue.slice(0)
@@ -2230,7 +2223,7 @@ if (this._processQueue.length) {
           var real = rp.realpathSync(p, self.realpathCache)
           set[real] = true
         } catch (er) {
-          if (er.syscall === &apos;stat&apos;)
+          if (er.syscall === 'stat')
             set[self._makeAbs(p)] = true
           else
             throw er
@@ -2276,17 +2269,17 @@ if (this._processQueue.length) {
 
 var set = this.matches[index] = Object.create(null)
 found.forEach(function (p, i) {
-  // If there&apos;s a problem with the stat, then it means that
-  // one or more of the links in the realpath couldn&apos;t be
+  // If there's a problem with the stat, then it means that
+  // one or more of the links in the realpath couldn't be
   // resolved.  just return the abs value in that case.
   p = self.<span class="apidocCodeKeywordSpan">_makeAbs</span>(p)
   rp.realpath(p, self.realpathCache, function (er, real) {
     if (!er)
       set[real] = true
-    else if (er.syscall === &apos;stat&apos;)
+    else if (er.syscall === 'stat')
       set[p] = true
     else
-      self.emit(&apos;error&apos;, er) // srsly wtf right here
+      self.emit('error', er) // srsly wtf right here
 ...</pre></li>
     </ul>
 
@@ -2317,7 +2310,7 @@ if (self.mark) {
       var notDir = !(/\/$/.test(e))
       var c = self.cache[e] || self.cache[makeAbs(self, e)]
       if (notDir &amp;&amp; c)
-        notDir = c !== &apos;DIR&apos; &amp;&amp; !Array.isArray(c)
+        notDir = c !== 'DIR' &amp;&amp; !Array.isArray(c)
 ...</pre></li>
     </ul>
 
@@ -2335,17 +2328,17 @@ if (self.mark) {
 
   // Get the first [n] parts of pattern that are all strings.
   var n = 0
-  while (typeof pattern[n] === &apos;string&apos;) {
+  while (typeof pattern[n] === 'string') {
     n ++
   }
   // now n is the index of the first one that is *not* a string.
 
-  // See if there&apos;s anything else
+  // See if there's anything else
   var prefix
   switch (n) {
     // if not, then this is rather simple
     case pattern.length:
-      this._processSimple(pattern.join(&apos;/&apos;), index)
+      this._processSimple(pattern.join('/'), index)
       return
 
     case 0:
@@ -2356,9 +2349,9 @@ if (self.mark) {
 
     default:
       // pattern has some string bits in the front.
-      // whatever it starts with, whether that&apos;s &apos;absolute&apos; like /foo/bar,
-      // or &apos;relative&apos; like &apos;../baz&apos;
-      prefix = pattern.slice(0, n).join(&apos;/&apos;)
+      // whatever it starts with, whether that's 'absolute' like /foo/bar,
+      // or 'relative' like '../baz'
+      prefix = pattern.slice(0, n).join('/')
       break
   }
 
@@ -2367,10 +2360,10 @@ if (self.mark) {
   // get the list of entries.
   var read
   if (prefix === null)
-    read = &apos;.&apos;
-  else if (isAbsolute(prefix) || isAbsolute(pattern.join(&apos;/&apos;))) {
+    read = '.'
+  else if (isAbsolute(prefix) || isAbsolute(pattern.join('/'))) {
     if (!prefix || !isAbsolute(prefix))
-      prefix = &apos;/&apos; + prefix
+      prefix = '/' + prefix
     read = prefix
   } else
     read = prefix
@@ -2420,7 +2413,7 @@ function done () {
   var entries = this._readdir(abs, inGlobStar)
 
   // no entries means not a dir, so it can never have matches
-  // foo.txt/** doesn&apos;t match foo.txt
+  // foo.txt/** doesn't match foo.txt
   if (!entries)
     return
 
@@ -2436,13 +2429,13 @@ function done () {
   var len = entries.length
   var isSym = this.symlinks[abs]
 
-  // If it&apos;s a symlink, and we&apos;re in a globstar, then stop
+  // If it's a symlink, and we're in a globstar, then stop
   if (isSym &amp;&amp; inGlobStar)
     return
 
   for (var i = 0; i &lt; len; i++) {
     var e = entries[i]
-    if (e.charAt(0) === &apos;.&apos; &amp;&amp; !this.dot)
+    if (e.charAt(0) === '.' &amp;&amp; !this.dot)
       continue
 
     // these two cases enter the inGlobStar state
@@ -2484,21 +2477,21 @@ this._readdir(abs, inGlobStar, function (er, entries) {
     <li>description and source-code<pre class="apidocCodePre">_processReaddir = function (prefix, read, abs, remain, index, inGlobStar) {
   var entries = this._readdir(abs, inGlobStar)
 
-  // if the abs isn&apos;t a dir, then nothing can match!
+  // if the abs isn't a dir, then nothing can match!
   if (!entries)
     return
 
   // It will only match dot entries if it starts with a dot, or if
-  // dot is set.  Stuff like @(.foo|.bar) isn&apos;t allowed.
+  // dot is set.  Stuff like @(.foo|.bar) isn't allowed.
   var pn = remain[0]
   var negate = !!this.minimatch.negate
   var rawGlob = pn._glob
-  var dotOk = this.dot || rawGlob.charAt(0) === &apos;.&apos;
+  var dotOk = this.dot || rawGlob.charAt(0) === '.'
 
   var matchedEntries = []
   for (var i = 0; i &lt; entries.length; i++) {
     var e = entries[i]
-    if (e.charAt(0) !== &apos;.&apos; || dotOk) {
+    if (e.charAt(0) !== '.' || dotOk) {
       var m
       if (negate &amp;&amp; !prefix) {
         m = !e.match(pn)
@@ -2527,13 +2520,13 @@ this._readdir(abs, inGlobStar, function (er, entries) {
     for (var i = 0; i &lt; len; i ++) {
       var e = matchedEntries[i]
       if (prefix) {
-        if (prefix.slice(-1) !== &apos;/&apos;)
-          e = prefix + &apos;/&apos; + e
+        if (prefix.slice(-1) !== '/')
+          e = prefix + '/' + e
         else
           e = prefix + e
       }
 
-      if (e.charAt(0) === &apos;/&apos; &amp;&amp; !this.nomount) {
+      if (e.charAt(0) === '/' &amp;&amp; !this.nomount) {
         e = path.join(this.root, e)
       }
       this._emitMatch(index, e)
@@ -2584,30 +2577,30 @@ this._readdir(abs, inGlobStar, function (er, entries) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_processSimple = function (prefix, index) {
-  // XXX review this.  Shouldn&apos;t it be doing the mounting etc
+  // XXX review this.  Shouldn't it be doing the mounting etc
   // before doing stat?  kinda weird?
   var exists = this._stat(prefix)
 
   if (!this.matches[index])
     this.matches[index] = Object.create(null)
 
-  // If it doesn&apos;t exist, then just mark the lack of results
+  // If it doesn't exist, then just mark the lack of results
   if (!exists)
     return
 
   if (prefix &amp;&amp; isAbsolute(prefix) &amp;&amp; !this.nomount) {
     var trail = /[\/\\]$/.test(prefix)
-    if (prefix.charAt(0) === &apos;/&apos;) {
+    if (prefix.charAt(0) === '/') {
       prefix = path.join(this.root, prefix)
     } else {
       prefix = path.resolve(this.root, prefix)
       if (trail)
-        prefix += &apos;/&apos;
+        prefix += '/'
     }
   }
 
-  if (process.platform === &apos;win32&apos;)
-    prefix = prefix.replace(/\\/g, &apos;/&apos;)
+  if (process.platform === 'win32')
+    prefix = prefix.replace(/\\/g, '/')
 
   // Mark this as a match
   this._emitMatch(index, prefix)
@@ -2615,12 +2608,12 @@ this._readdir(abs, inGlobStar, function (er, entries) {
     <li>example usage<pre class="apidocCodePre">...
   // now n is the index of the first one that is *not* a string.
 
-  // see if there&apos;s anything else
+  // see if there's anything else
   var prefix
   switch (n) {
 // if not, then this is rather simple
 case pattern.length:
-  this.<span class="apidocCodeKeywordSpan">_processSimple</span>(pattern.join(&apos;/&apos;), index, cb)
+  this.<span class="apidocCodeKeywordSpan">_processSimple</span>(pattern.join('/'), index, cb)
   return
 
 case 0:
@@ -2648,7 +2641,7 @@ case 0:
 
   if (ownProp(this.cache, abs)) {
     var c = this.cache[abs]
-    if (!c || c === &apos;FILE&apos;)
+    if (!c || c === 'FILE')
       return null
 
     if (Array.isArray(c))
@@ -2677,7 +2670,7 @@ this.<span class="apidocCodeKeywordSpan">_readdir</span>(abs, inGlobStar, functi
 
 Glob.prototype._processReaddir2 = function (prefix, read, abs, remain, index, inGlobStar, entries, cb) {
 
-// if the abs isn&apos;t a dir, then nothing can match!
+// if the abs isn't a dir, then nothing can match!
 ...</pre></li>
     </ul>
 
@@ -2691,16 +2684,16 @@ Glob.prototype._processReaddir2 = function (prefix, read, abs, remain, index, in
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_readdirEntries = function (abs, entries) {
-  // if we haven&apos;t asked to stat everything, then just
+  // if we haven't asked to stat everything, then just
   // assume that everything in there exists, so we can avoid
   // having to stat it a second time.
   if (!this.mark &amp;&amp; !this.stat) {
     for (var i = 0; i &lt; entries.length; i ++) {
       var e = entries[i]
-      if (abs === &apos;/&apos;)
+      if (abs === '/')
         e = abs + e
       else
-        e = abs + &apos;/&apos; + e
+        e = abs + '/' + e
       this.cache[e] = true
     }
   }
@@ -2740,22 +2733,22 @@ if (this.aborted)
     <li>description and source-code<pre class="apidocCodePre">_readdirError = function (f, er) {
   // handle errors, and cache the information
   switch (er.code) {
-    case &apos;ENOTSUP&apos;: // https://github.com/isaacs/node-glob/issues/205
-    case &apos;ENOTDIR&apos;: // totally normal. means it *does* exist.
+    case 'ENOTSUP': // https://github.com/isaacs/node-glob/issues/205
+    case 'ENOTDIR': // totally normal. means it *does* exist.
       var abs = this._makeAbs(f)
-      this.cache[abs] = &apos;FILE&apos;
+      this.cache[abs] = 'FILE'
       if (abs === this.cwdAbs) {
-        var error = new Error(er.code + &apos; invalid cwd &apos; + this.cwd)
+        var error = new Error(er.code + ' invalid cwd ' + this.cwd)
         error.path = this.cwd
         error.code = er.code
         throw error
       }
       break
 
-    case &apos;ENOENT&apos;: // not terribly unusual
-    case &apos;ELOOP&apos;:
-    case &apos;ENAMETOOLONG&apos;:
-    case &apos;UNKNOWN&apos;:
+    case 'ENOENT': // not terribly unusual
+    case 'ELOOP':
+    case 'ENAMETOOLONG':
+    case 'UNKNOWN':
       this.cache[this._makeAbs(f)] = false
       break
 
@@ -2764,7 +2757,7 @@ if (this.aborted)
       if (this.strict)
         throw er
       if (!this.silent)
-        console.error(&apos;glob error&apos;, er)
+        console.error('glob error', er)
       break
   }
 }</pre></li>
@@ -2808,8 +2801,8 @@ if (this.aborted)
   try {
     lstat = fs.lstatSync(abs)
   } catch (er) {
-    if (er.code === &apos;ENOENT&apos;) {
-      // lstat failed, doesn&apos;t exist
+    if (er.code === 'ENOENT') {
+      // lstat failed, doesn't exist
       return null
     }
   }
@@ -2817,10 +2810,10 @@ if (this.aborted)
   var isSym = lstat &amp;&amp; lstat.isSymbolicLink()
   this.symlinks[abs] = isSym
 
-  // If it&apos;s not a symlink or a dir, then it&apos;s definitely a regular file.
-  // don&apos;t bother doing a readdir in that case.
+  // If it's not a symlink or a dir, then it's definitely a regular file.
+  // don't bother doing a readdir in that case.
   if (!isSym &amp;&amp; lstat &amp;&amp; !lstat.isDirectory())
-    this.cache[abs] = &apos;FILE&apos;
+    this.cache[abs] = 'FILE'
   else
     entries = this._readdir(abs, false)
 
@@ -2828,17 +2821,17 @@ if (this.aborted)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-  cb = inflight(&apos;readdir\0&apos;+abs+&apos;\0&apos;+inGlobStar, cb)
+  cb = inflight('readdir\0'+abs+'\0'+inGlobStar, cb)
   if (!cb)
 return
 
-  //console.error(&apos;RD %j %j&apos;, +inGlobStar, abs)
+  //console.error('RD %j %j', +inGlobStar, abs)
   if (inGlobStar &amp;&amp; !ownProp(this.symlinks, abs))
 return this.<span class="apidocCodeKeywordSpan">_readdirInGlobStar</span>(abs, cb)
 
   if (ownProp(this.cache, abs)) {
 var c = this.cache[abs]
-if (!c || c === &apos;FILE&apos;)
+if (!c || c === 'FILE')
   return cb()
 
 if (Array.isArray(c))
@@ -2856,7 +2849,7 @@ if (Array.isArray(c))
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_stat = function (f) {
   var abs = this._makeAbs(f)
-  var needDir = f.slice(-1) === &apos;/&apos;
+  var needDir = f.slice(-1) === '/'
 
   if (f.length &gt; this.maxLength)
     return false
@@ -2865,13 +2858,13 @@ if (Array.isArray(c))
     var c = this.cache[abs]
 
     if (Array.isArray(c))
-      c = &apos;DIR&apos;
+      c = 'DIR'
 
     // It exists, but maybe not how we need it
-    if (!needDir || c === &apos;DIR&apos;)
+    if (!needDir || c === 'DIR')
       return c
 
-    if (needDir &amp;&amp; c === &apos;FILE&apos;)
+    if (needDir &amp;&amp; c === 'FILE')
       return false
 
     // otherwise we have to stat, because maybe c=true
@@ -2885,7 +2878,7 @@ if (Array.isArray(c))
     try {
       lstat = fs.lstatSync(abs)
     } catch (er) {
-      if (er &amp;&amp; (er.code === &apos;ENOENT&apos; || er.code === &apos;ENOTDIR&apos;)) {
+      if (er &amp;&amp; (er.code === 'ENOENT' || er.code === 'ENOTDIR')) {
         this.statCache[abs] = false
         return false
       }
@@ -2906,11 +2899,11 @@ if (Array.isArray(c))
 
   var c = true
   if (stat)
-    c = stat.isDirectory() ? &apos;DIR&apos; : &apos;FILE&apos;
+    c = stat.isDirectory() ? 'DIR' : 'FILE'
 
   this.cache[abs] = this.cache[abs] || c
 
-  if (needDir &amp;&amp; c === &apos;FILE&apos;)
+  if (needDir &amp;&amp; c === 'FILE')
     return false
 
   return c
@@ -2920,7 +2913,7 @@ cb()
 }
 
 Glob.prototype._processSimple = function (prefix, index, cb) {
-// XXX review this.  Shouldn&apos;t it be doing the mounting etc
+// XXX review this.  Shouldn't it be doing the mounting etc
 // before doing stat?  kinda weird?
 var self = this
 this.<span class="apidocCodeKeywordSpan">_stat</span>(prefix, function (er, exists) {
@@ -2929,7 +2922,7 @@ this.<span class="apidocCodeKeywordSpan">_stat</span>(prefix, function (er, exis
 }
 Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
 
-//console.error(&apos;ps2&apos;, prefix, exists)
+//console.error('ps2', prefix, exists)
 ...</pre></li>
     </ul>
 
@@ -3040,7 +3033,7 @@ Glob.prototype._processSimple2 = function (prefix, index, er, exists, cb) {
         var notDir = !(/\/$/.test(e))
         var c = self.cache[e] || self.cache[makeAbs(self, e)]
         if (notDir &amp;&amp; c)
-          notDir = c !== &apos;DIR&apos; &amp;&amp; !Array.isArray(c)
+          notDir = c !== 'DIR' &amp;&amp; !Array.isArray(c)
         return notDir
       })
     }
@@ -3062,7 +3055,7 @@ if (this.realpath &amp;&amp; !this._didRealpath)
   return this._realpath()
 
 common.<span class="apidocCodeKeywordSpan">finish</span>(this)
-this.emit(&apos;end&apos;, this.found)
+this.emit('end', this.found)
 }
 
 Glob.prototype._realpath = function () {
@@ -3102,9 +3095,9 @@ if (this._didRealpath)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function makeAbs(self, f) {
   var abs = f
-  if (f.charAt(0) === &apos;/&apos;) {
+  if (f.charAt(0) === '/') {
     abs = path.join(self.root, f)
-  } else if (isAbsolute(f) || f === &apos;&apos;) {
+  } else if (isAbsolute(f) || f === '') {
     abs = f
   } else if (self.changedCwd) {
     abs = path.resolve(self.cwd, f)
@@ -3112,8 +3105,8 @@ if (this._didRealpath)
     abs = path.resolve(f)
   }
 
-  if (process.platform === &apos;win32&apos;)
-    abs = abs.replace(/\\/g, &apos;/&apos;)
+  if (process.platform === 'win32')
+    abs = abs.replace(/\\/g, '/')
 
   return abs
 }</pre></li>
@@ -3130,7 +3123,7 @@ Glob.prototype._makeAbs = function (f) {
 
 Glob.prototype.abort = function () {
   this.aborted = true
-  this.emit(&apos;abort&apos;)
+  this.emit('abort')
 }
 ...</pre></li>
     </ul>
@@ -3149,11 +3142,11 @@ Glob.prototype.abort = function () {
   var c = self.cache[abs]
   var m = p
   if (c) {
-    var isDir = c === &apos;DIR&apos; || Array.isArray(c)
-    var slash = p.slice(-1) === &apos;/&apos;
+    var isDir = c === 'DIR' || Array.isArray(c)
+    var slash = p.slice(-1) === '/'
 
     if (isDir &amp;&amp; !slash)
-      m += &apos;/&apos;
+      m += '/'
     else if (!isDir &amp;&amp; slash)
       m = m.slice(0, -1)
 
@@ -3214,11 +3207,11 @@ Glob.prototype.abort = function () {
     options = {}
 
   // base-matching: just use globstar for that.
-  if (options.matchBase &amp;&amp; -1 === pattern.indexOf(&quot;/&quot;)) {
+  if (options.matchBase &amp;&amp; -1 === pattern.indexOf("/")) {
     if (options.noglobstar) {
-      throw new Error(&quot;base matching requires globstar&quot;)
+      throw new Error("base matching requires globstar")
     }
-    pattern = &quot;**/&quot; + pattern
+    pattern = "**/" + pattern
   }
 
   self.silent = !!options.silent
@@ -3250,23 +3243,23 @@ Glob.prototype.abort = function () {
 
   self.changedCwd = false
   var cwd = process.cwd()
-  if (!ownProp(options, &quot;cwd&quot;))
+  if (!ownProp(options, "cwd"))
     self.cwd = cwd
   else {
     self.cwd = path.resolve(options.cwd)
     self.changedCwd = self.cwd !== cwd
   }
 
-  self.root = options.root || path.resolve(self.cwd, &quot;/&quot;)
+  self.root = options.root || path.resolve(self.cwd, "/")
   self.root = path.resolve(self.root)
-  if (process.platform === &quot;win32&quot;)
-    self.root = self.root.replace(/\\/g, &quot;/&quot;)
+  if (process.platform === "win32")
+    self.root = self.root.replace(/\\/g, "/")
 
   // TODO: is an absolute `cwd` supposed to be resolved against `root`?
-  // e.g. { cwd: &apos;/test&apos;, root: __dirname } === path.join(__dirname, &apos;/test&apos;)
+  // e.g. { cwd: '/test', root: __dirname } === path.join(__dirname, '/test')
   self.cwdAbs = isAbsolute(self.cwd) ? self.cwd : makeAbs(self, self.cwd)
-  if (process.platform === &quot;win32&quot;)
-    self.cwdAbs = self.cwdAbs.replace(/\\/g, &quot;/&quot;)
+  if (process.platform === "win32")
+    self.cwdAbs = self.cwdAbs.replace(/\\/g, "/")
   self.nomount = !!options.nomount
 
   // disable comments and negation in Minimatch.
@@ -3295,9 +3288,9 @@ Glob.prototype.abort = function () {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function globSync(pattern, options) {
-  if (typeof options === &apos;function&apos; || arguments.length === 3)
-    throw new TypeError(&apos;callback provided to sync glob\n&apos;+
-                        &apos;See: https://github.com/isaacs/node-glob/issues/167&apos;)
+  if (typeof options === 'function' || arguments.length === 3)
+    throw new TypeError('callback provided to sync glob\n'+
+                        'See: https://github.com/isaacs/node-glob/issues/167')
 
   return new GlobSync(pattern, options).found
 }</pre></li>
@@ -3330,11 +3323,11 @@ Perform a synchronous glob search.
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function GlobSync(pattern, options) {
   if (!pattern)
-    throw new Error(&apos;must provide pattern&apos;)
+    throw new Error('must provide pattern')
 
-  if (typeof options === &apos;function&apos; || arguments.length === 3)
-    throw new TypeError(&apos;callback provided to sync glob\n&apos;+
-                        &apos;See: https://github.com/isaacs/node-glob/issues/167&apos;)
+  if (typeof options === 'function' || arguments.length === 3)
+    throw new TypeError('callback provided to sync glob\n'+
+                        'See: https://github.com/isaacs/node-glob/issues/167')
 
   if (!(this instanceof GlobSync))
     return new GlobSync(pattern, options)
@@ -3363,3 +3356,4 @@ Perform a synchronous glob search.
     ]
 </div>
 </div>
+</body></html>
