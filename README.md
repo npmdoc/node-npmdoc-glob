@@ -1,6 +1,6 @@
 # npmdoc-glob
 
-#### basic api documentation for  [glob (v7.1.1)](https://github.com/isaacs/node-glob#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-glob.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-glob) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-glob.svg)](https://travis-ci.org/npmdoc/node-npmdoc-glob)
+#### basic api documentation for  [glob (7.1.2)](https://github.com/isaacs/node-glob#readme)  [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-glob.svg)](https://travis-ci.org/npmdoc/node-npmdoc-glob)
 
 #### a little globber
 
@@ -8,11 +8,11 @@
 
 - [https://npmdoc.github.io/node-npmdoc-glob/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-glob/build/apidoc.html)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-glob/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-glob/build/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-glob/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-glob/build/apidoc.html)
 
-![npmPackageListing](https://npmdoc.github.io/node-npmdoc-glob/build/screenCapture.npmPackageListing.svg)
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-glob/build/screenshot.npmPackageListing.svg)
 
-![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-glob/build/screenCapture.npmPackageDependencyTree.svg)
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-glob/build/screenshot.npmPackageDependencyTree.svg)
 
 
 
@@ -32,7 +32,7 @@
         "fs.realpath": "^1.0.0",
         "inflight": "^1.0.4",
         "inherits": "2",
-        "minimatch": "^3.0.2",
+        "minimatch": "^3.0.4",
         "once": "^1.3.0",
         "path-is-absolute": "^1.0.0"
     },
@@ -45,8 +45,9 @@
     },
     "directories": {},
     "dist": {
-        "shasum": "805211df04faaf1c63a3600306cdf5ade50b2ec8",
-        "tarball": "https://registry.npmjs.org/glob/-/glob-7.1.1.tgz"
+        "integrity": "sha512-MJTUg1kjuLeQCJ+ccE4Vpa6kKVXkPYJ2mOCQyUuKLcLQsdrMCpBPUi8qVE6+YuaJkozeA9NusTAw3hLr8Xe5EQ==",
+        "shasum": "c19c9df9a028702d678612384a6552404c636d15",
+        "tarball": "https://registry.npmjs.org/glob/-/glob-7.1.2.tgz"
     },
     "engines": {
         "node": "*"
@@ -56,7 +57,7 @@
         "sync.js",
         "common.js"
     ],
-    "gitHead": "bc8d43b736a98a9e289fdfceee9266cff35e5742",
+    "gitHead": "8fa8d561e08c9eed1d286c6a35be2cd8123b2fb7",
     "homepage": "https://github.com/isaacs/node-glob#readme",
     "license": "ISC",
     "main": "glob.js",
@@ -80,7 +81,7 @@
         "test": "tap test/*.js --cov",
         "test-regen": "npm run profclean && TEST_REGEN=1 node test/00-setup.js"
     },
-    "version": "7.1.1",
+    "version": "7.1.2",
     "bin": {}
 }
 ```
