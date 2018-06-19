@@ -32967,7 +32967,7 @@ local.stateInit({
             "npm_package_homepage": "https://github.com/npmdoc/node-npmdoc-glob",
             "npm_package_name": "npmdoc-glob",
             "npm_package_nameLib": "npmdoc_glob",
-            "npm_package_version": "2017.4.27"
+            "npm_package_version": "2018.6.19"
         }
     }
 });
